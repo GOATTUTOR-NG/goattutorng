@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GoatTutor AI 🐐</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Segoe UI,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:900px;
+}
+
+.card{
+background:#1e293b;
+border-radius:24px;
+padding:30px;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.logo{
+font-size:3rem;
+text-align:center;
+margin-bottom:10px;
+}
+
+h1{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:10px;
+}
+
+.tagline{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+textarea{
+width:100%;
+height:250px;
+border:none;
+outline:none;
+resize:none;
+border-radius:18px;
+padding:20px;
+font-size:1rem;
+background:#0f172a;
+color:white;
+}
+
+textarea::placeholder{
+color:#94a3b8;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
+margin-top:20px;
+}
+
+.option{
+background:#334155;
+padding:15px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+text-align:center;
+}
+
+.option:hover{
+transform:translateY(-2px);
+}
+
+.selected{
+background:#2563eb;
+}
+
+button{
+width:100%;
+margin-top:25px;
+padding:18px;
+border:none;
+border-radius:14px;
+font-size:1.1rem;
+font-weight:bold;
+cursor:pointer;
+background:#3b82f6;
+color:white;
+transition:.3s;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+margin-top:25px;
+}
+
+.feature{
+background:#0f172a;
+padding:15px;
+border-radius:12px;
+text-align:center;
+color:#cbd5e1;
+}
+
+.footer{
+margin-top:25px;
+text-align:center;
+font-size:.9rem;
+color:#94a3b8;
+}
+
+@media(max-width:600px){
+
+h1{
+font-size:2rem;
+}
+
+.logo{
+font-size:2.5rem;
+}
+
+textarea{
+height:220px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="logo">🐐</div>
+
+<h1>GoatTutor AI</h1>
+
+<p class="tagline">
+Explain am like I'm a goat.<br>
+Simple explanations, exam-focused tutorials,
+memory tricks, and likely CBT questions.
+</p>
+
+<textarea id="topic"
+placeholder="Paste your lecture note, topic, or course title here...
+
+Example:
+Ampere-Maxwell Law
+CHM 102 Organic Chemistry
+Electromagnetism
+Atomic Structure">
+</textarea>
+
+<div class="options">
+
+<div class="option selected"
+onclick="selectMode(this,'tutorial')">
+📚 Full Tutorial
+</div>
+
+<div class="option"
+onclick="selectMode(this,'summary')">
+📝 Summary Notes
+</div>
+
+<div class="option"
+onclick="selectMode(this,'mcq')">
+🎯 Exam MCQs
+</div>
+
+<div class="option"
+onclick="selectMode(this,'revision')">
+⚡ Crash Revision
+</div>
+
+</div>
+
+<button onclick="teachMe()">
+🚀 Teach Me
+</button>
+
+<div class="features">
+
+<div class="feature">
+🎓 University Level
+</div>
+
+<div class="feature">
+😂 Funny Analogies
+</div>
+
+<div class="feature">
+🧠 Memory Tricks
+</div>
+
+<div class="feature">
+📖 Exam Focus
+</div>
+
+</div>
+
+<div class="footer">
+Built for Nigerian Students 🇳🇬
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let mode = "tutorial";
+
+function selectMode(element,value){
+
+mode = value;
+
+document.querySelectorAll('.option')
+.forEach(item=>{
+item.classList.remove('selected');
+});
+
+element.classList.add('selected');
+}
+
+function teachMe(){
+
+let topic =
+document.getElementById('topic').value;
+
+if(topic.trim()===""){
+alert("Please enter a topic first.");
+return;
+}
+
+let instruction="";
+
+if(mode==="tutorial"){
+
+instruction=`
+Act as GoatTutor AI.
+
+Teach this topic like a professional university tutor.
+
+Requirements:
+
+- Explain from beginner to advanced.
+- Use simple language.
+- Use funny analogies.
+- Use Nigerian student examples.
+- Include memory tricks.
+- Highlight likely exam questions.
+- End with 10 MCQs and answers.
+
+Topic:
+`;
+
+}
+
+if(mode==="summary"){
+
+instruction=`
+Summarize this topic into exam-ready notes.
+
+Requirements:
+
+- Short and comprehensive.
+- Important formulas.
+- Key definitions.
+- Most likely exam points.
+
+Topic:
+`;
+
+}
+
+if(mode==="mcq"){
+
+instruction=`
+Generate 20 university-level MCQs.
+
+Requirements:
+
+- Tough exam standard.
+- Include calculations where needed.
+- Provide answers after each question.
+
+Topic:
+`;
+
+}
+
+if(mode==="revision"){
+
+instruction=`
+Create a crash revision guide.
+
+Requirements:
+
+- Everything needed for an exam tomorrow.
+- Key points only.
+- Memory tricks.
+- Likely questions.
+
+Topic:
+`;
+
+}
+
+let prompt =
+instruction + topic;
+
+let url =
+"https://chatgpt.com/?q=" +
+encodeURIComponent(prompt);
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
