@@ -1,355 +1,990 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GoatTutor AI 🐐</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,Segoe UI,sans-serif;
-}
-
-body{
-background:#0f172a;
-color:white;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.container{
-width:100%;
-max-width:900px;
-}
-
-.card{
-background:#1e293b;
-border-radius:24px;
-padding:30px;
-box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.logo{
-font-size:3rem;
-text-align:center;
-margin-bottom:10px;
-}
-
-h1{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:10px;
-}
-
-.tagline{
-text-align:center;
-color:#cbd5e1;
-margin-bottom:30px;
-line-height:1.6;
-}
-
-textarea{
-width:100%;
-height:250px;
-border:none;
-outline:none;
-resize:none;
-border-radius:18px;
-padding:20px;
-font-size:1rem;
-background:#0f172a;
-color:white;
-}
-
-textarea::placeholder{
-color:#94a3b8;
-}
-
-.options{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:12px;
-margin-top:20px;
-}
-
-.option{
-background:#334155;
-padding:15px;
-border-radius:12px;
-cursor:pointer;
-transition:.3s;
-text-align:center;
-}
-
-.option:hover{
-transform:translateY(-2px);
-}
-
-.selected{
-background:#2563eb;
-}
-
-button{
-width:100%;
-margin-top:25px;
-padding:18px;
-border:none;
-border-radius:14px;
-font-size:1.1rem;
-font-weight:bold;
-cursor:pointer;
-background:#3b82f6;
-color:white;
-transition:.3s;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
-margin-top:25px;
-}
-
-.feature{
-background:#0f172a;
-padding:15px;
-border-radius:12px;
-text-align:center;
-color:#cbd5e1;
-}
-
-.footer{
-margin-top:25px;
-text-align:center;
-font-size:.9rem;
-color:#94a3b8;
-}
-
-@media(max-width:600px){
-
-h1{
-font-size:2rem;
-}
-
-.logo{
-font-size:2.5rem;
-}
-
-textarea{
-height:220px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>GoatTutor NG v6 🐐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background: #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid #334155;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .topbar .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .topbar .menuBtn {
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .topbar .menuBtn:hover {
+            background: #334155;
+        }
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 90;
+            display: none;
+        }
+        .sidebar-overlay.show {
+            display: block;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 270px;
+            height: 100%;
+            background: #0f172a;
+            padding: 20px 14px;
+            transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-right: 1px solid #334155;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .sidebar h3 {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 12px 14px;
+            border: none;
+            border-radius: 10px;
+            background: #1e293b;
+            color: #e2e8f0;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 48px;
+        }
+        .sidebar button:hover {
+            background: #334155;
+            transform: translateX(3px);
+        }
+        .sidebar button.active-nav {
+            background: #3b82f6;
+            color: #fff;
+            font-weight: 600;
+        }
+        .sidebar .close-btn {
+            background: #dc2626;
+            color: #fff;
+            justify-content: center;
+            font-weight: 600;
+            margin-top: auto;
+        }
+        .sidebar .close-btn:hover {
+            background: #b91c1c;
+            transform: none;
+        }
+        .container {
+            padding: 12px 14px;
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-bottom: 40px;
+        }
+        .card {
+            background: #1e293b;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            transition: box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        }
+        .card h3 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 6px;
+            border-radius: 10px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            outline: none;
+            resize: vertical;
+            min-height: 44px;
+        }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        textarea {
+            min-height: 70px;
+        }
+        button {
+            width: 100%;
+            padding: 12px 14px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #3b82f6;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        button:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+        }
+        button:active {
+            transform: scale(0.97);
+        }
+        button.secondary {
+            background: #475569;
+        }
+        button.secondary:hover {
+            background: #64748b;
+        }
+        button.danger {
+            background: #dc2626;
+        }
+        button.danger:hover {
+            background: #b91c1c;
+        }
+        button.small-btn {
+            width: auto;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            min-height: 34px;
+        }
+        .row {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .row input,
+        .row select {
+            flex: 1 1 0;
+            min-width: 80px;
+        }
+        .row button {
+            flex: 1 1 0;
+            min-width: 70px;
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+        .small {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+        .dash-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        @media (max-width:400px) {
+            .dash-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .dash-card {
+            background: #0f172a;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .dash-card .value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+        .dash-card .label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        .notification-toast {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: #1e293b;
+            border: 1px solid #3b82f6;
+            color: #e2e8f0;
+            padding: 14px 18px;
+            border-radius: 12px;
+            z-index: 200;
+            opacity: 0;
+            transform: translateX(120%);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            pointer-events: none;
+            max-width: 320px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        .notification-toast.show {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+        .notification-toast .close-toast {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #94a3b8;
+        }
+        @media (max-width:600px) {
+            .row {
+                flex-direction: column;
+            }
+            .row input,
+            .row select,
+            .row button {
+                flex: 1 1 100%;
+                min-width: 0;
+            }
+            .sidebar {
+                width: 260px;
+                left: -260px;
+                padding: 16px 12px;
+            }
+            .sidebar button {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+                min-height: 44px;
+            }
+            .container {
+                padding: 8px 10px;
+                gap: 10px;
+            }
+            .card {
+                padding: 12px 14px;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <!-- SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
 
-<div class="card">
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <h3>📋 Navigation</h3>
+        <button class="active-nav" onclick="navigateTo('main')" id="navMain">🏠 Home</button>
+        <button onclick="navigateTo('research')" id="navResearch">🔍 Summarizer</button>
+        <button onclick="navigateTo('performance')" id="navPerformance">📊 Analyzer</button>
+        <button onclick="navigateTo('assignment')" id="navAssignment">💡 Ideas</button>
+        <button onclick="navigateTo('wellness')" id="navWellness">🧘 Wellness</button>
+        <button onclick="navigateTo('bookshelf')" id="navBookshelf">📚 Bookshelf</button>
+        <button class="close-btn" onclick="closeMenu()">✕ Close</button>
+    </div>
 
-<div class="logo">🐐</div>
+    <!-- NOTIFICATION TOAST -->
+    <div class="notification-toast" id="notificationToast">
+        <span class="close-toast" onclick="hideNotification()">✕</span>
+        <span id="notificationText">Notification</span>
+    </div>
 
-<h1>GoatTutor AI</h1>
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="logo">🐐 GoatTutor NG v6</div>
+        <button class="menuBtn" onclick="toggleMenu()">☰</button>
+    </div>
 
-<p class="tagline">
-Explain am like I'm a goat.<br>
-Simple explanations, exam-focused tutorials,
-memory tricks, and likely CBT questions.
-</p>
+    <!-- MAIN CONTENT -->
+    <div class="container">
 
-<textarea id="topic"
-placeholder="Paste your lecture note, topic, or course title here...
+        <!-- ========== HOME ========== -->
+        <div class="page-section active" id="sectionMain">
 
-Example:
-Ampere-Maxwell Law
-CHM 102 Organic Chemistry
-Electromagnetism
-Atomic Structure">
-</textarea>
+            <!-- Dashboard -->
+            <div class="card">
+                <h3>📊 Dashboard</h3>
+                <div class="dash-grid">
+                    <div class="dash-card"><div class="value" id="dashGPA">--</div><div class="label">GPA</div></div>
+                    <div class="dash-card"><div class="value" id="dashCGPA">--</div><div class="label">CGPA</div></div>
+                    <div class="dash-card"><div class="value" id="dashDegree">--</div><div class="label">Degree</div></div>
+                    <div class="dash-card"><div class="value" id="dashStanding">--</div><div class="label">Standing</div></div>
+                </div>
+                <div class="small" style="margin-top:10px;">🔥 Streak: <strong><span id="streakDisplay">0</span> days</strong></div>
+                <div class="small">⏱ Study: <strong><span id="hoursDisplay">0</span> hrs</strong></div>
+                <div class="small">📅 Sessions: <strong><span id="sessionCountDisplay">0</span></strong></div>
+            </div>
 
-<div class="options">
+            <!-- Quick links to new features -->
+            <div class="card">
+                <h3>🚀 New Tools</h3>
+                <div class="dash-grid">
+                    <div class="dash-card" onclick="navigateTo('research')" style="cursor:pointer;">
+                        <div class="value" style="font-size:1.2rem;">🔍</div>
+                        <div class="label">Summarizer</div>
+                    </div>
+                    <div class="dash-card" onclick="navigateTo('performance')" style="cursor:pointer;">
+                        <div class="value" style="font-size:1.2rem;">📊</div>
+                        <div class="label">Analyzer</div>
+                    </div>
+                    <div class="dash-card" onclick="navigateTo('assignment')" style="cursor:pointer;">
+                        <div class="value" style="font-size:1.2rem;">💡</div>
+                        <div class="label">Ideas</div>
+                    </div>
+                    <div class="dash-card" onclick="navigateTo('wellness')" style="cursor:pointer;">
+                        <div class="value" style="font-size:1.2rem;">🧘</div>
+                        <div class="label">Wellness</div>
+                    </div>
+                    <div class="dash-card" onclick="navigateTo('bookshelf')" style="cursor:pointer;">
+                        <div class="value" style="font-size:1.2rem;">📚</div>
+                        <div class="label">Bookshelf</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="option selected"
-onclick="selectMode(this,'tutorial')">
-📚 Full Tutorial
-</div>
+        <!-- ========== RESEARCH SUMMARIZER ========== -->
+        <div class="page-section" id="sectionResearch">
+            <div class="card">
+                <h3>🔍 Research Paper Summarizer</h3>
+                <p class="small">Paste academic text – get a simplified summary instantly.</p>
+                <textarea id="researchText" placeholder="Paste research abstract, journal article, or complex text..." style="min-height:100px;"></textarea>
+                <div class="row">
+                    <select id="summaryLength" style="flex:1;">
+                        <option value="short">Short (3-5 sentences)</option>
+                        <option value="medium" selected>Medium (8-12)</option>
+                        <option value="detailed">Detailed (15-20)</option>
+                    </select>
+                    <button onclick="summarizeResearch()">📄 Summarize</button>
+                </div>
+                <div id="researchResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
+                    <div style="font-weight:600;color:#fbbf24;">📝 Summary</div>
+                    <div id="researchSummary" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
+                    <div style="margin-top:6px;font-size:0.75rem;color:#94a3b8;">🔑 <span id="researchKeywords">Keywords</span></div>
+                    <button onclick="copyResearchSummary()" class="secondary small-btn" style="width:auto;margin-top:4px;">📋 Copy</button>
+                </div>
+            </div>
+        </div>
 
-<div class="option"
-onclick="selectMode(this,'summary')">
-📝 Summary Notes
-</div>
+        <!-- ========== EXAM PERFORMANCE ANALYZER ========== -->
+        <div class="page-section" id="sectionPerformance">
+            <div class="card">
+                <h3>📊 Exam Performance Analyzer</h3>
+                <p class="small">Add your results and discover strengths & weaknesses.</p>
+                <div class="row">
+                    <input type="text" id="perfSubject" placeholder="Subject" style="flex:2;">
+                    <input type="number" id="perfScore" placeholder="Score (%)" min="0" max="100" style="flex:1;">
+                    <select id="perfExamType" style="flex:1;">
+                        <option value="test">Test</option>
+                        <option value="midterm">Midterm</option>
+                        <option value="exam">Exam</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <button onclick="addPerformance()" class="secondary">➕ Add</button>
+                    <button onclick="analyzePerformance()">📊 Analyze</button>
+                </div>
+                <div id="performanceList" style="margin-top:8px;max-height:100px;overflow-y:auto;"></div>
+                <div id="performanceResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
+                    <div style="font-weight:600;color:#fbbf24;">📊 Analysis</div>
+                    <div id="perfAnalysis" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
+                </div>
+            </div>
+        </div>
 
-<div class="option"
-onclick="selectMode(this,'mcq')">
-🎯 Exam MCQs
-</div>
+        <!-- ========== ASSIGNMENT IDEA GENERATOR ========== -->
+        <div class="page-section" id="sectionAssignment">
+            <div class="card">
+                <h3>💡 Assignment Idea Generator</h3>
+                <p class="small">Stuck? Get fresh ideas and outlines.</p>
+                <div class="row">
+                    <input type="text" id="assignSubject" placeholder="Subject" style="flex:2;">
+                    <input type="text" id="assignTopic" placeholder="Topic (optional)" style="flex:2;">
+                </div>
+                <div class="row">
+                    <select id="assignType" style="flex:1;">
+                        <option value="essay">Essay</option>
+                        <option value="research">Research Paper</option>
+                        <option value="case study">Case Study</option>
+                        <option value="presentation">Presentation</option>
+                        <option value="project">Project</option>
+                    </select>
+                    <button onclick="generateAssignmentIdea()">💡 Generate</button>
+                </div>
+                <div id="assignmentResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
+                    <div style="font-weight:600;color:#fbbf24;">💡 Ideas</div>
+                    <div id="assignmentIdeas" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
+                    <button onclick="copyAssignmentIdeas()" class="secondary small-btn" style="width:auto;margin-top:4px;">📋 Copy</button>
+                </div>
+            </div>
+        </div>
 
-<div class="option"
-onclick="selectMode(this,'revision')">
-⚡ Crash Revision
-</div>
+        <!-- ========== STUDY BREAK & WELLNESS ========== -->
+        <div class="page-section" id="sectionWellness">
+            <div class="card">
+                <h3>🧘 Study Break & Wellness Tracker</h3>
+                <p class="small">Avoid burnout – track your sessions and breaks.</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;">
+                    <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
+                        <div style="font-size:0.6rem;color:#94a3b8;">Study Sessions</div>
+                        <div style="font-size:1.2rem;font-weight:700;color:#3b82f6;" id="wellnessSessions">0</div>
+                    </div>
+                    <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
+                        <div style="font-size:0.6rem;color:#94a3b8;">Breaks Taken</div>
+                        <div style="font-size:1.2rem;font-weight:700;color:#22c55e;" id="wellnessBreaks">0</div>
+                    </div>
+                    <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
+                        <div style="font-size:0.6rem;color:#94a3b8;">Stress Level</div>
+                        <div style="font-size:1.2rem;font-weight:700;color:#fbbf24;" id="wellnessStress">--</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button onclick="startStudySession()" class="secondary">📚 Study</button>
+                    <button onclick="startBreak()">🧘 Break</button>
+                    <button onclick="logStressLevel()">😰 Log Stress</button>
+                </div>
+                <div id="breakRecommendation" style="margin-top:6px;padding:8px;background:#0f172a;border-radius:6px;text-align:center;font-size:0.85rem;color:#94a3b8;">
+                    Click "Study" to start tracking your session.
+                </div>
+            </div>
+        </div>
 
-</div>
+        <!-- ========== DIGITAL BOOKSHELF ========== -->
+        <div class="page-section" id="sectionBookshelf">
+            <div class="card">
+                <h3>📚 Digital Bookshelf</h3>
+                <p class="small">Organize your study resources.</p>
+                <div class="row">
+                    <input type="text" id="bookTitle" placeholder="Resource Title" style="flex:2;">
+                    <input type="text" id="bookLink" placeholder="Link (optional)" style="flex:2;">
+                </div>
+                <div class="row">
+                    <select id="bookCourse" style="flex:1;">
+                        <option value="">Select Course</option>
+                        <option value="CHM 101">CHM 101</option>
+                        <option value="PHY 101">PHY 101</option>
+                        <option value="MTH 101">MTH 101</option>
+                        <option value="BIO 101">BIO 101</option>
+                        <option value="GST 101">GST 101</option>
+                        <option value="General">General</option>
+                    </select>
+                    <select id="bookType" style="flex:1;">
+                        <option value="PDF">PDF/Book</option>
+                        <option value="Video">Video</option>
+                        <option value="Website">Website</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="number" id="bookRating" placeholder="Rating (1-5)" min="1" max="5" style="flex:1;">
+                    <button onclick="addBook()" class="secondary">➕ Add</button>
+                </div>
+                <input type="text" id="bookSearch" placeholder="Search resources..." style="margin-top:6px;" onkeyup="searchBooks()">
+                <div id="bookList" style="margin-top:8px;max-height:150px;overflow-y:auto;"></div>
+            </div>
+        </div>
 
-<button onclick="teachMe()">
-🚀 Teach Me
-</button>
+    </div>
 
-<div class="features">
+    <script>
+        /* ============================================================
+           GOATTUTOR v6 – ALL FEATURES IN ONE BLOCK
+           ============================================================ */
 
-<div class="feature">
-🎓 University Level
-</div>
+        // ─── GLOBAL ───
+        let currentSection = 'main';
+        let studySessionStart = null;
 
-<div class="feature">
-😂 Funny Analogies
-</div>
+        // ─── MENU ───
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('show');
+        }
 
-<div class="feature">
-🧠 Memory Tricks
-</div>
+        function closeMenu() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('show');
+        }
 
-<div class="feature">
-📖 Exam Focus
-</div>
+        const sectionMap = {
+            'main': 'sectionMain',
+            'research': 'sectionResearch',
+            'performance': 'sectionPerformance',
+            'assignment': 'sectionAssignment',
+            'wellness': 'sectionWellness',
+            'bookshelf': 'sectionBookshelf'
+        };
+        const navMap = {
+            'main': 'navMain',
+            'research': 'navResearch',
+            'performance': 'navPerformance',
+            'assignment': 'navAssignment',
+            'wellness': 'navWellness',
+            'bookshelf': 'navBookshelf'
+        };
 
-</div>
+        function navigateTo(section) {
+            closeMenu();
+            currentSection = section;
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(sectionMap[section]);
+            if (target) target.classList.add('active');
+            document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active-nav'));
+            const navBtn = document.getElementById(navMap[section]);
+            if (navBtn) navBtn.classList.add('active-nav');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Refresh content for specific sections
+            if (section === 'performance') renderPerformance();
+            if (section === 'bookshelf') renderBooks();
+        }
 
-<div class="footer">
-Built for Nigerian Students 🇳🇬
-</div>
+        // ─── NOTIFICATIONS ───
+        function showNotification(msg, dur) {
+            const toast = document.getElementById('notificationToast');
+            document.getElementById('notificationText').textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._t);
+            toast._t = setTimeout(() => toast.classList.remove('show'), dur || 3500);
+        }
 
-</div>
+        function hideNotification() {
+            document.getElementById('notificationToast').classList.remove('show');
+        }
 
-</div>
+        // ─── DASHBOARD HELPERS ───
+        function getDegreeClass(cgpa) {
+            cgpa = parseFloat(cgpa);
+            if (isNaN(cgpa)) return 'N/A';
+            if (cgpa >= 4.50) return '🥇 First';
+            if (cgpa >= 3.50) return '🥈 2:1';
+            if (cgpa >= 2.40) return '🥉 2:2';
+            if (cgpa >= 1.50) return '📘 Third';
+            if (cgpa >= 1.00) return '📗 Pass';
+            return '⚠️ Below';
+        }
 
-<script>
+        function getStanding(cgpa) {
+            cgpa = parseFloat(cgpa);
+            if (isNaN(cgpa)) return 'N/A';
+            if (cgpa >= 3.50) return '✅ Good';
+            if (cgpa >= 2.40) return '⚠️ Average';
+            return '🔴 Improve';
+        }
 
-let mode = "tutorial";
+        function updateDash() {
+            const gpa = localStorage.getItem('gpa') || '--';
+            const cgpa = localStorage.getItem('cgpa') || '--';
+            document.getElementById('dashGPA').innerText = gpa === '--' ? '--' : parseFloat(gpa).toFixed(2);
+            document.getElementById('dashCGPA').innerText = cgpa === '--' ? '--' : parseFloat(cgpa).toFixed(2);
+            document.getElementById('dashDegree').innerText = getDegreeClass(cgpa);
+            document.getElementById('dashStanding').innerText = getStanding(cgpa);
+            const streak = parseInt(localStorage.getItem('streak')) || 0;
+            document.getElementById('streakDisplay').innerText = streak;
+            const mins = parseInt(localStorage.getItem('studyMinutes')) || 0;
+            document.getElementById('hoursDisplay').innerText = (mins / 60).toFixed(1);
+            const sessions = JSON.parse(localStorage.getItem('sessionLog') || '[]').length;
+            document.getElementById('sessionCountDisplay').innerText = sessions;
+        }
 
-function selectMode(element,value){
+        // ─── 1. RESEARCH SUMMARIZER ───
+        function summarizeResearch() {
+            const text = document.getElementById('researchText').value.trim();
+            const length = document.getElementById('summaryLength').value;
+            const resultDiv = document.getElementById('researchResult');
+            if (!text) { showNotification('⚠️ Please paste some text.'); return; }
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 10);
+            let count = length === 'short' ? 3 : length === 'medium' ? 7 : 12;
+            const summary = sentences.slice(0, Math.min(count, sentences.length)).map(s => s.trim() + '.').join(' ');
+            const words = text.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+            const freq = {};
+            words.forEach(w => { if (w.length > 3 && !['the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can', 'had',
+                    'her', 'was', 'one', 'our', 'out'].includes(w)) { freq[w] = (freq[w] || 0) + 1; } });
+            const keywords = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 6).map(k => k[0]);
+            document.getElementById('researchSummary').innerHTML = summary || 'Not enough text to summarize.';
+            document.getElementById('researchKeywords').innerHTML = keywords.length > 0 ? keywords.join(', ') :
+            'No keywords.';
+            resultDiv.style.display = 'block';
+            showNotification('📄 Summary generated!');
+        }
 
-mode = value;
+        function copyResearchSummary() {
+            const s = document.getElementById('researchSummary').innerText;
+            if (s) { navigator.clipboard.writeText(s);
+                showNotification('📋 Copied!'); }
+        }
 
-document.querySelectorAll('.option')
-.forEach(item=>{
-item.classList.remove('selected');
-});
+        // ─── 2. EXAM PERFORMANCE ANALYZER ───
+        function getPerfData() { try { return JSON.parse(localStorage.getItem('perfData')) || []; } catch { return []; } }
 
-element.classList.add('selected');
-}
+        function savePerfData(d) { localStorage.setItem('perfData', JSON.stringify(d)); }
 
-function teachMe(){
+        function addPerformance() {
+            const subject = document.getElementById('perfSubject').value.trim();
+            const score = parseInt(document.getElementById('perfScore').value);
+            const type = document.getElementById('perfExamType').value;
+            if (!subject) { showNotification('⚠️ Enter subject.'); return; }
+            if (isNaN(score) || score < 0 || score > 100) { showNotification('⚠️ Valid score 0-100.'); return; }
+            const data = getPerfData();
+            data.push({ id: Date.now(), subject, score, type, date: new Date().toLocaleString() });
+            savePerfData(data);
+            renderPerformance();
+            document.getElementById('perfSubject').value = '';
+            document.getElementById('perfScore').value = '';
+            showNotification('📊 Result added!');
+        }
 
-let topic =
-document.getElementById('topic').value;
+        function renderPerformance() {
+            const data = getPerfData();
+            const container = document.getElementById('performanceList');
+            if (!data.length) { container.innerHTML = '<span class="small">No results yet.</span>'; return; }
+            container.innerHTML = data.reverse().map(d =>
+                `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;font-size:0.85rem;">
+                    <span><strong>${d.subject}</strong> (${d.type})</span>
+                    <span style="color:${d.score>=70?'#22c55e':d.score>=50?'#fbbf24':'#ef4444'};">${d.score}%</span>
+                    <button onclick="deletePerf(${d.id})" class="danger small-btn" style="padding:2px 8px;font-size:0.7rem;">✕</button>
+                </div>`
+            ).join('');
+        }
 
-if(topic.trim()===""){
-alert("Please enter a topic first.");
-return;
-}
+        function deletePerf(id) {
+            let data = getPerfData();
+            data = data.filter(d => d.id !== id);
+            savePerfData(data);
+            renderPerformance();
+            showNotification('🗑 Removed.');
+        }
 
-let instruction="";
+        function analyzePerformance() {
+            const data = getPerfData();
+            const resultDiv = document.getElementById('performanceResult');
+            if (!data.length) { showNotification('⚠️ Add results first.'); return; }
+            const subjects = {};
+            data.forEach(d => { if (!subjects[d.subject]) subjects[d.subject] = [];
+                subjects[d.subject].push(d.score); });
+            let html = '<div style="font-size:0.85rem;">';
+            Object.entries(subjects).forEach(([s, scores]) => {
+                const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+                const trend = scores.length > 1 && scores[scores.length - 1] > scores[0] ? '⬆️' : '➡️';
+                const color = avg >= 70 ? '#22c55e' : avg >= 50 ? '#fbbf24' : '#ef4444';
+                html +=
+                    `<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #334155;">
+                        <span>${s}</span>
+                        <span style="color:${color};">${avg.toFixed(1)}%</span>
+                        <span style="font-size:0.7rem;color:#94a3b8;">${trend}</span>
+                    </div>`;
+            });
+            const all = data.map(d => d.score);
+            const overall = all.reduce((a, b) => a + b, 0) / all.length;
+            const color2 = overall >= 70 ? '#22c55e' : overall >= 50 ? '#fbbf24' : '#ef4444';
+            const rec = overall >= 70 ? '✅ Great! Keep it up!' : overall >= 50 ? '📈 Good, focus on weak areas.' :
+                '🔴 Needs improvement.';
+            html +=
+                `<div style="margin-top:6px;padding:8px;background:#0f172a;border-radius:4px;text-align:center;">
+                    <div style="font-weight:700;color:${color2};">Overall: ${overall.toFixed(1)}%</div>
+                    <div style="font-size:0.8rem;color:#94a3b8;">${rec}</div>
+                </div>`;
+            const weak = Object.entries(subjects).filter(([_, s]) => s.reduce((a, b) => a + b, 0) / s.length < 50).map((
+            [s]) => s);
+            if (weak.length) html +=
+                `<div style="margin-top:6px;padding:4px 8px;background:#ef4444;border-radius:4px;font-size:0.8rem;">⚠️ Focus: ${weak.join(', ')}</div>`;
+            html += '</div>';
+            document.getElementById('perfAnalysis').innerHTML = html;
+            resultDiv.style.display = 'block';
+            showNotification('📊 Analysis done!');
+        }
 
-if(mode==="tutorial"){
+        // ─── 3. ASSIGNMENT IDEA GENERATOR ───
+        function generateAssignmentIdea() {
+            const subject = document.getElementById('assignSubject').value.trim();
+            const topic = document.getElementById('assignTopic').value.trim() || subject;
+            const type = document.getElementById('assignType').value;
+            const resultDiv = document.getElementById('assignmentResult');
+            if (!subject) { showNotification('⚠️ Enter a subject.'); return; }
+            const ideas = {
+                'essay': [
+                    `"The Impact of ${topic} on Modern Society" – Explore how ${topic} shapes our world.`,
+                    `"A Critical Analysis of ${topic}" – Evaluate key theories and perspectives.`,
+                    `"The Evolution of ${topic}" – Trace development over time.`,
+                    `"${topic} in the 21st Century" – Current challenges and opportunities.`,
+                    `"Comparative Study of ${topic}" – Compare different approaches.`
+                ],
+                'research': [
+                    `"Investigating the Effects of ${topic}" – Design a research study.`,
+                    `"A Literature Review of ${topic}" – Synthesize existing research.`,
+                    `"Case Study Analysis of ${topic}" – In-depth examination.`,
+                    `"Survey Research on ${topic}" – Design and analyze a survey.`,
+                    `"Experimental Study of ${topic}" – Propose an experiment.`
+                ],
+                'case study': [
+                    `"Case Study: ${topic} in Action" – Real-world application.`,
+                    `"Examining ${topic}: A Case Study Approach" – Deep dive.`,
+                    `"Lessons from ${topic}" – What can we learn?`,
+                    `"Comparative Case Studies in ${topic}" – Compare multiple cases.`
+                ],
+                'presentation': [
+                    `"The Story of ${topic}" – Tell the story with visuals.`,
+                    `"5 Key Things About ${topic}" – Clear, concise presentation.`,
+                    `"${topic} Explained" – Simplify complex concepts.`,
+                    `"The Future of ${topic}" – Trends and predictions.`
+                ],
+                'project': [
+                    `"Building a ${topic} Project" – Create something tangible.`,
+                    `"Solving Problems with ${topic}" – Apply to real challenges.`,
+                    `"${topic} Innovation Challenge" – Develop creative solutions.`,
+                    `"Community Impact Project on ${topic}" – Make a difference.`
+                ]
+            };
+            const list = ideas[type] || ideas['essay'];
+            const selected = list.slice(0, 3);
+            let html = '<div style="font-size:0.85rem;">';
+            selected.forEach((idea, i) => {
+                html +=
+                    `<div style="padding:6px 8px;background:#0f172a;border-radius:4px;margin-top:4px;border-left:3px solid #3b82f6;">
+                        <strong>Idea ${i+1}:</strong> ${idea}
+                    </div>`;
+            });
+            html +=
+                `<div style="margin-top:6px;padding:8px;background:#0f172a;border-radius:4px;border:1px solid #334155;">
+                    <div style="font-weight:600;color:#fbbf24;">📋 Outline</div>
+                    <div style="font-size:0.8rem;color:#94a3b8;">1. Introduction<br>2. Body – Key points<br>3. Conclusion<br>4. References</div>
+                </div>`;
+            html += '</div>';
+            document.getElementById('assignmentIdeas').innerHTML = html;
+            resultDiv.style.display = 'block';
+            showNotification('💡 Ideas generated!');
+        }
 
-instruction=`
-Act as GoatTutor AI.
+        function copyAssignmentIdeas() {
+            const s = document.getElementById('assignmentIdeas').innerText;
+            if (s) { navigator.clipboard.writeText(s);
+                showNotification('📋 Copied!'); }
+        }
 
-Teach this topic like a professional university tutor.
+        // ─── 4. WELLNESS TRACKER ───
+        function getWellness() { try { return JSON.parse(localStorage.getItem('wellnessData')) || { sessions: 0,
+                    breaks: 0, stress: [] }; } catch { return { sessions: 0, breaks: 0, stress: [] }; } }
 
-Requirements:
+        function saveWellness(d) { localStorage.setItem('wellnessData', JSON.stringify(d)); }
 
-- Explain from beginner to advanced.
-- Use simple language.
-- Use funny analogies.
-- Use Nigerian student examples.
-- Include memory tricks.
-- Highlight likely exam questions.
-- End with 10 MCQs and answers.
+        function updateWellnessUI() {
+            const d = getWellness();
+            document.getElementById('wellnessSessions').innerText = d.sessions || 0;
+            document.getElementById('wellnessBreaks').innerText = d.breaks || 0;
+            if (d.stress && d.stress.length) {
+                const last = d.stress[d.stress.length - 1];
+                const emoji = last <= 3 ? '😊' : last <= 6 ? '🙂' : last <= 8 ? '😰' : '😱';
+                document.getElementById('wellnessStress').innerHTML = last + '/10 ' + emoji;
+            }
+        }
 
-Topic:
-`;
+        function startStudySession() {
+            const d = getWellness();
+            d.sessions += 1;
+            saveWellness(d);
+            studySessionStart = Date.now();
+            updateWellnessUI();
+            document.getElementById('breakRecommendation').innerHTML =
+                '📚 Studying... Started at ' + new Date().toLocaleTimeString() +
+                '<br><span style="font-size:0.7rem;color:#94a3b8;">💡 Take a 5-min break every 25 min.</span>';
+            showNotification('📚 Study session started!');
+            setTimeout(() => {
+                if (studySessionStart) {
+                    document.getElementById('breakRecommendation').innerHTML =
+                        '⏰ 25 min done! Time for a break. Click "Break" to rest.';
+                    showNotification('⏰ Time for a break!');
+                }
+            }, 1500000);
+        }
 
-}
+        function startBreak() {
+            const d = getWellness();
+            d.breaks += 1;
+            saveWellness(d);
+            studySessionStart = null;
+            updateWellnessUI();
+            const activities = ['🚶 Take a 5-min walk', '🧘 Stretch your neck & back', '💧 Drink water',
+                '👀 Look away from screen', '🎵 Listen to music', '😮‍💨 Deep breathing'
+            ];
+            const act = activities[Math.floor(Math.random() * activities.length)];
+            document.getElementById('breakRecommendation').innerHTML = '🧘 Break started. ' + act;
+            showNotification('🧘 Break time!');
+        }
 
-if(mode==="summary"){
+        function logStressLevel() {
+            const val = prompt('Stress level (1-10):\n1=No stress  10=Extreme');
+            if (val === null) return;
+            const num = parseInt(val);
+            if (isNaN(num) || num < 1 || num > 10) { showNotification('⚠️ Enter 1-10.'); return; }
+            const d = getWellness();
+            d.stress.push(num);
+            saveWellness(d);
+            updateWellnessUI();
+            const emoji = num <= 3 ? '😊' : num <= 6 ? '🙂' : num <= 8 ? '😰' : '😱';
+            showNotification('😰 Stress logged: ' + num + '/10 ' + emoji);
+        }
 
-instruction=`
-Summarize this topic into exam-ready notes.
+        // ─── 5. DIGITAL BOOKSHELF ───
+        function getBooks() { try { return JSON.parse(localStorage.getItem('bookshelf')) || []; } catch { return []; } }
 
-Requirements:
+        function saveBooks(b) { localStorage.setItem('bookshelf', JSON.stringify(b)); }
 
-- Short and comprehensive.
-- Important formulas.
-- Key definitions.
-- Most likely exam points.
+        function addBook() {
+            const title = document.getElementById('bookTitle').value.trim();
+            const link = document.getElementById('bookLink').value.trim();
+            const course = document.getElementById('bookCourse').value || 'General';
+            const type = document.getElementById('bookType').value;
+            const rating = parseInt(document.getElementById('bookRating').value) || 0;
+            if (!title) { showNotification('⚠️ Enter a title.'); return; }
+            const books = getBooks();
+            books.push({ id: Date.now(), title, link: link || '#', course, type, rating, done: false,
+                date: new Date().toLocaleString() });
+            saveBooks(books);
+            renderBooks();
+            document.getElementById('bookTitle').value = '';
+            document.getElementById('bookLink').value = '';
+            document.getElementById('bookRating').value = '';
+            showNotification('📚 "' + title + '" added!');
+        }
 
-Topic:
-`;
+        function renderBooks(filter) {
+            let books = getBooks();
+            const container = document.getElementById('bookList');
+            const search = (filter || '').toLowerCase();
+            if (search) books = books.filter(b => b.title.toLowerCase().includes(search) || b.course.toLowerCase()
+            .includes(search) || b.type.toLowerCase().includes(search));
+            if (!books.length) { container.innerHTML = '<span class="small">No resources yet.</span>'; return; }
+            container.innerHTML = books.map(b =>
+                `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;font-size:0.85rem;">
+                    <div><strong>${b.title}</strong> <span style="font-size:0.7rem;color:#94a3b8;">(${b.course})</span> ${b.rating > 0 ? '⭐'.repeat(Math.min(b.rating,5)) : ''}</div>
+                    <div style="display:flex;gap:4px;align-items:center;">
+                        ${b.link && b.link !== '#' ? `<a href="${b.link}" target="_blank" style="color:#3b82f6;text-decoration:none;">🔗</a>` : ''}
+                        <button onclick="toggleBook(${b.id})" class="secondary small-btn" style="padding:2px 6px;font-size:0.6rem;">${b.done ? '✅' : '⬜'}</button>
+                        <button onclick="deleteBook(${b.id})" class="danger small-btn" style="padding:2px 6px;font-size:0.6rem;">✕</button>
+                    </div>
+                </div>`
+            ).join('');
+        }
 
-}
+        function toggleBook(id) {
+            const books = getBooks();
+            const b = books.find(b => b.id === id);
+            if (b) { b.done = !b.done;
+                saveBooks(books);
+                renderBooks(document.getElementById('bookSearch').value);
+                showNotification(b.done ? '✅ Completed!' : '↩ Reopened.'); }
+        }
 
-if(mode==="mcq"){
+        function deleteBook(id) {
+            let books = getBooks();
+            books = books.filter(b => b.id !== id);
+            saveBooks(books);
+            renderBooks(document.getElementById('bookSearch').value);
+            showNotification('🗑 Removed.');
+        }
 
-instruction=`
-Generate 20 university-level MCQs.
+        function searchBooks() {
+            renderBooks(document.getElementById('bookSearch').value);
+        }
 
-Requirements:
+        // ─── INIT ───
+        function init() {
+            updateDash();
+            updateWellnessUI();
+            renderPerformance();
+            renderBooks();
+        }
 
-- Tough exam standard.
-- Include calculations where needed.
-- Provide answers after each question.
+        document.getElementById('sidebarOverlay').addEventListener('click', closeMenu);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-Topic:
-`;
-
-}
-
-if(mode==="revision"){
-
-instruction=`
-Create a crash revision guide.
-
-Requirements:
-
-- Everything needed for an exam tomorrow.
-- Key points only.
-- Memory tricks.
-- Likely questions.
-
-Topic:
-`;
-
-}
-
-let prompt =
-instruction + topic;
-
-let url =
-"https://chatgpt.com/?q=" +
-encodeURIComponent(prompt);
-
-window.open(url,"_blank");
-
-}
-
-</script>
-
+        init();
+        console.log('🐐 GoatTutor NG v6 – All features loaded.');
+    </script>
 </body>
 </html>
