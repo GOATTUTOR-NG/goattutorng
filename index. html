@@ -27,12 +27,9 @@
             top: 0;
             z-index: 50;
             border-bottom: 1px solid #334155;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        .topbar .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
+        .topbar .logo { font-weight: 700; font-size: 1.1rem; }
         .topbar .menuBtn {
             font-size: 28px;
             background: none;
@@ -47,22 +44,18 @@
             align-items: center;
             justify-content: center;
         }
-        .topbar .menuBtn:hover {
-            background: #334155;
-        }
+        .topbar .menuBtn:hover { background: #334155; }
         .sidebar-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0,0,0,0.6);
             z-index: 90;
             display: none;
         }
-        .sidebar-overlay.show {
-            display: block;
-        }
+        .sidebar-overlay.show { display: block; }
         .sidebar {
             position: fixed;
             top: 0;
@@ -76,12 +69,10 @@
             z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
             overflow-y: auto;
         }
-        .sidebar.open {
-            left: 0;
-        }
+        .sidebar.open { left: 0; }
         .sidebar h3 {
             font-size: 0.75rem;
             color: #94a3b8;
@@ -89,7 +80,69 @@
             letter-spacing: 0.5px;
             margin-bottom: 6px;
         }
-        .sidebar button {
+        /* Sidebar group styles */
+        .sidebar-group { margin-top: 2px; }
+        .sidebar-group-btn {
+            width: 100% !important;
+            padding: 12px 14px !important;
+            border: none !important;
+            border-radius: 10px !important;
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+            text-align: left !important;
+            cursor: pointer !important;
+            font-size: 0.95rem !important;
+            transition: all 0.2s !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 10px !important;
+            min-height: 48px !important;
+        }
+        .sidebar-group-btn:hover {
+            background: #334155 !important;
+            transform: translateX(3px) !important;
+        }
+        .sidebar-group-btn .arrow {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+        .sidebar-group-btn .arrow.open { transform: rotate(180deg); }
+        .sidebar-group-items {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding-left: 8px;
+        }
+        .sidebar-group-items.open { max-height: 500px; }
+        .sidebar-group-items button {
+            width: 100% !important;
+            padding: 10px 14px !important;
+            border: none !important;
+            border-radius: 8px !important;
+            background: #0f172a !important;
+            color: #94a3b8 !important;
+            text-align: left !important;
+            cursor: pointer !important;
+            font-size: 0.85rem !important;
+            transition: all 0.2s !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            min-height: 40px !important;
+            margin-top: 2px !important;
+        }
+        .sidebar-group-items button:hover {
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+            transform: translateX(3px) !important;
+        }
+        .sidebar-group-items button.active-nav {
+            background: #3b82f6 !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+        }
+        .sidebar button:not(.sidebar-group-btn):not(.sidebar-group-items button) {
             width: 100%;
             padding: 12px 14px;
             border: none;
@@ -105,26 +158,24 @@
             gap: 10px;
             min-height: 48px;
         }
-        .sidebar button:hover {
+        .sidebar button:not(.sidebar-group-btn):not(.sidebar-group-items button):hover {
             background: #334155;
             transform: translateX(3px);
         }
-        .sidebar button.active-nav {
+        .sidebar button:not(.sidebar-group-btn):not(.sidebar-group-items button).active-nav {
             background: #3b82f6;
             color: #fff;
             font-weight: 600;
         }
         .sidebar .close-btn {
-            background: #dc2626;
-            color: #fff;
-            justify-content: center;
-            font-weight: 600;
-            margin-top: auto;
+            background: #dc2626 !important;
+            color: #fff !important;
+            justify-content: center !important;
+            font-weight: 600 !important;
+            margin-top: auto !important;
         }
-        .sidebar .close-btn:hover {
-            background: #b91c1c;
-            transform: none;
-        }
+        .sidebar .close-btn:hover { background: #b91c1c !important; transform: none !important; }
+
         .container {
             padding: 12px 14px;
             max-width: 720px;
@@ -141,9 +192,7 @@
             border: 1px solid #334155;
             transition: box-shadow 0.3s;
         }
-        .card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-        }
+        .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
         .card h3 {
             margin-bottom: 8px;
             font-size: 1rem;
@@ -153,9 +202,7 @@
             gap: 6px;
             flex-wrap: wrap;
         }
-        input,
-        textarea,
-        select {
+        input, textarea, select {
             width: 100%;
             padding: 10px 12px;
             margin-top: 6px;
@@ -168,15 +215,11 @@
             resize: vertical;
             min-height: 44px;
         }
-        input:focus,
-        textarea:focus,
-        select:focus {
+        input:focus, textarea:focus, select:focus {
             border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
         }
-        textarea {
-            min-height: 70px;
-        }
+        textarea { min-height: 70px; }
         button {
             width: 100%;
             padding: 12px 14px;
@@ -198,23 +241,13 @@
         button:hover {
             background: #2563eb;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.35);
         }
-        button:active {
-            transform: scale(0.97);
-        }
-        button.secondary {
-            background: #475569;
-        }
-        button.secondary:hover {
-            background: #64748b;
-        }
-        button.danger {
-            background: #dc2626;
-        }
-        button.danger:hover {
-            background: #b91c1c;
-        }
+        button:active { transform: scale(0.97); }
+        button.secondary { background: #475569; }
+        button.secondary:hover { background: #64748b; }
+        button.danger { background: #dc2626; }
+        button.danger:hover { background: #b91c1c; }
         button.small-btn {
             width: auto;
             padding: 8px 16px;
@@ -228,36 +261,18 @@
             margin-top: 6px;
             flex-wrap: wrap;
         }
-        .row input,
-        .row select {
-            flex: 1 1 0;
-            min-width: 80px;
-        }
-        .row button {
-            flex: 1 1 0;
-            min-width: 70px;
-        }
-        .page-section {
-            display: none;
-        }
-        .page-section.active {
-            display: block;
-        }
-        .small {
-            font-size: 0.75rem;
-            color: #94a3b8;
-        }
+        .row input, .row select { flex: 1 1 0; min-width: 80px; }
+        .row button { flex: 1 1 0; min-width: 70px; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .small { font-size: 0.75rem; color: #94a3b8; }
         .dash-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
             margin-top: 6px;
         }
-        @media (max-width:400px) {
-            .dash-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        @media (max-width:400px) { .dash-grid { grid-template-columns: 1fr; } }
         .dash-card {
             background: #0f172a;
             border-radius: 10px;
@@ -265,18 +280,8 @@
             text-align: center;
             border: 1px solid #334155;
         }
-        .dash-card .value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #fbbf24;
-        }
-        .dash-card .label {
-            font-size: 0.7rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
+        .dash-card .value { font-size: 1.6rem; font-weight: 700; color: #fbbf24; }
+        .dash-card .label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
         .notification-toast {
             position: fixed;
             top: 16px;
@@ -289,16 +294,12 @@
             z-index: 200;
             opacity: 0;
             transform: translateX(120%);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.4s cubic-bezier(0.25,0.8,0.25,1);
             pointer-events: none;
             max-width: 320px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
-        .notification-toast.show {
-            opacity: 1;
-            transform: translateX(0);
-            pointer-events: auto;
-        }
+        .notification-toast.show { opacity: 1; transform: translateX(0); pointer-events: auto; }
         .notification-toast .close-toast {
             position: absolute;
             top: 4px;
@@ -310,681 +311,1631 @@
             color: #94a3b8;
         }
         @media (max-width:600px) {
-            .row {
-                flex-direction: column;
-            }
-            .row input,
-            .row select,
-            .row button {
-                flex: 1 1 100%;
-                min-width: 0;
-            }
-            .sidebar {
-                width: 260px;
-                left: -260px;
-                padding: 16px 12px;
-            }
-            .sidebar button {
-                font-size: 0.9rem;
-                padding: 10px 12px;
-                min-height: 44px;
-            }
-            .container {
-                padding: 8px 10px;
-                gap: 10px;
-            }
-            .card {
-                padding: 12px 14px;
-            }
+            .row { flex-direction: column; }
+            .row input, .row select, .row button { flex: 1 1 100%; min-width: 0; }
+            .sidebar { width: 260px; left: -260px; padding: 16px 12px; }
+            .sidebar button { font-size: 0.9rem; padding: 10px 12px; min-height: 44px; }
+            .container { padding: 8px 10px; gap: 10px; }
+            .card { padding: 12px 14px; }
         }
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #475569;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        .timer { font-size: 44px; text-align: center; margin: 10px 0; font-weight: 700; color: #fbbf24; }
+        .timer-row { display: flex; gap: 6px; flex-wrap: wrap; }
+        .timer-row button { flex: 1; min-width: 70px; }
+        .countdown-display { font-size: 1.8rem; font-weight: 700; text-align: center; color: #f87171; font-family: monospace; }
+        .countdown-label { text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+        .history-list { max-height: 180px; overflow-y: auto; margin-top: 8px; font-size: 0.8rem; color: #cbd5e1; }
+        .history-list .history-item { background: #0f172a; padding: 8px 10px; border-radius: 8px; margin-top: 4px; display: flex; justify-content: space-between; border: 1px solid #334155; flex-wrap: wrap; gap: 4px; }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR OVERLAY -->
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
+<!-- ─── SIDEBAR OVERLAY ─── -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
 
-    <!-- SIDEBAR -->
-    <div class="sidebar" id="sidebar">
-        <h3>📋 Navigation</h3>
-        <button class="active-nav" onclick="navigateTo('main')" id="navMain">🏠 Home</button>
-        <button onclick="navigateTo('research')" id="navResearch">🔍 Summarizer</button>
-        <button onclick="navigateTo('performance')" id="navPerformance">📊 Analyzer</button>
-        <button onclick="navigateTo('assignment')" id="navAssignment">💡 Ideas</button>
-        <button onclick="navigateTo('wellness')" id="navWellness">🧘 Wellness</button>
-        <button onclick="navigateTo('bookshelf')" id="navBookshelf">📚 Bookshelf</button>
-        <button class="close-btn" onclick="closeMenu()">✕ Close</button>
+<!-- ─── SIDEBAR ─── -->
+<div class="sidebar" id="sidebar">
+    <h3>📋 Navigation</h3>
+    
+    <!-- Dashboard (no group) -->
+    <button class="active-nav" onclick="navigateTo('main')" id="navMain">🏠 Dashboard</button>
+    
+    <!-- Academic Tools Group -->
+    <div class="sidebar-group">
+        <button class="sidebar-group-btn" onclick="toggleGroup('academic')" id="groupAcademic">
+            📚 Academic Tools <span class="arrow">▼</span>
+        </button>
+        <div class="sidebar-group-items" id="academicItems">
+            <button onclick="navigateTo('gpaCalculator')" id="navGPA">📊 GPA Calculator</button>
+            <button onclick="navigateTo('cgpaCalculator')" id="navCGPA">📈 CGPA Calculator</button>
+            <button onclick="navigateTo('cgpaTracker')" id="navCGPA2">📊 CGPA Tracker</button>
+            <button onclick="navigateTo('gpaHistory')" id="navGPAHistory">📜 GPA History</button>
+        </div>
+    </div>
+    
+    <!-- UNIOSUN Tools Group -->
+    <div class="sidebar-group">
+        <button class="sidebar-group-btn" onclick="toggleGroup('uniosun')" id="groupUniosun">
+            🎯 UNIOSUN Tools <span class="arrow">▼</span>
+        </button>
+        <div class="sidebar-group-items" id="uniosunItems">
+            <button onclick="navigateTo('screening')" id="navScreening">🎯 Screening Calculator</button>
+            <button onclick="navigateTo('cutoff')" id="navCutoff">📊 Cut‑off Marks</button>
+            <button onclick="navigateTo('calendar')" id="navCalendar">📅 Academic Calendar</button>
+        </div>
+    </div>
+    
+    <!-- Study Tools Group -->
+    <div class="sidebar-group">
+        <button class="sidebar-group-btn" onclick="toggleGroup('study')" id="groupStudy">
+            📖 Study Tools <span class="arrow">▼</span>
+        </button>
+        <div class="sidebar-group-items" id="studyItems">
+            <button onclick="navigateTo('planner')" id="navPlanner">📅 Weekly Planner</button>
+            <button onclick="navigateTo('timer')" id="navTimer">⏱ Study Timer</button>
+            <button onclick="navigateTo('reminders')" id="navReminders">🔔 Reminders</button>
+            <button onclick="navigateTo('notes')" id="navNotes">📓 Lecture Notes</button>
+            <button onclick="navigateTo('bookshelf')" id="navBookshelf">📚 Bookshelf</button>
+            <button onclick="navigateTo('summarizer')" id="navSummarizer">🔍 Summarizer</button>
+            <button onclick="navigateTo('assignment')" id="navAssignment">💡 Assignment Ideas</button>
+        </div>
+    </div>
+    
+    <!-- Analytics Group -->
+    <div class="sidebar-group">
+        <button class="sidebar-group-btn" onclick="toggleGroup('analytics')" id="groupAnalytics">
+            📊 Analytics <span class="arrow">▼</span>
+        </button>
+        <div class="sidebar-group-items" id="analyticsItems">
+            <button onclick="navigateTo('analyzer')" id="navAnalyzer">📊 Performance Analyzer</button>
+            <button onclick="navigateTo('examAnalyzer')" id="navExamAnalyzer">📊 Exam Analyzer</button>
+            <button onclick="navigateTo('sessionLog')" id="navSessionLog">📝 Session Log</button>
+        </div>
+    </div>
+    
+    <!-- Wellness & Countdown (no group) -->
+    <button onclick="navigateTo('wellness')" id="navWellness">🧘 Wellness</button>
+    <button onclick="navigateTo('countdown')" id="navCountdown">⏳ Exam Countdown</button>
+    
+    <button class="close-btn" onclick="closeMenu()">✕ Close Menu</button>
+</div>
+
+<!-- ─── NOTIFICATION TOAST ─── -->
+<div class="notification-toast" id="notificationToast">
+    <span class="close-toast" onclick="hideNotification()">✕</span>
+    <span id="notificationText">Notification</span>
+</div>
+
+<!-- ─── TOP BAR ─── -->
+<div class="topbar">
+    <div class="logo">🐐 GoatTutor NG v6</div>
+    <button class="menuBtn" onclick="toggleMenu()">☰</button>
+</div>
+
+<!-- ─── MAIN CONTENT ─── -->
+<div class="container">
+
+    <!-- ========== MAIN DASHBOARD ========== -->
+    <div class="page-section active" id="sectionMain">
+        <!-- AI -->
+        <div class="card">
+            <h3>🧠 AI Study Interface</h3>
+            <textarea id="topic" placeholder="Enter topic..."></textarea>
+            <select id="mode">
+                <option value="tutorial">📖 Tutorial</option>
+                <option value="summary">📝 Summary</option>
+                <option value="mcq">❓ MCQ Quiz</option>
+                <option value="revision">🔄 Revision</option>
+                <option value="flashcards">🃏 Flashcards</option>
+            </select>
+            <button onclick="askAI()">🚀 Ask AI Now</button>
+        </div>
+        <!-- Dashboard -->
+        <div class="card">
+            <h3>📊 Academic Dashboard</h3>
+            <div class="dash-grid">
+                <div class="dash-card"><div class="value" id="dashGPA">--</div><div class="label">GPA</div></div>
+                <div class="dash-card"><div class="value" id="dashCGPA">--</div><div class="label">CGPA</div></div>
+                <div class="dash-card"><div class="value" id="dashDegree">--</div><div class="label">Degree</div></div>
+                <div class="dash-card"><div class="value" id="dashStanding">--</div><div class="label">Standing</div></div>
+            </div>
+            <div class="small" style="margin-top:10px;">🔥 Streak: <strong><span id="streakDisplay">0</span> days</strong></div>
+            <div class="small">⏱ Study: <strong><span id="hoursDisplay">0</span> hrs</strong></div>
+            <div class="small">📅 Sessions: <strong><span id="sessionCountDisplay">0</span></strong></div>
+        </div>
     </div>
 
-    <!-- NOTIFICATION TOAST -->
-    <div class="notification-toast" id="notificationToast">
-        <span class="close-toast" onclick="hideNotification()">✕</span>
-        <span id="notificationText">Notification</span>
+    <!-- ========== GPA CALCULATOR ========== -->
+    <div class="page-section" id="sectionGPACalculator">
+        <div class="card">
+            <h3>📚 GPA Calculator – Semester View</h3>
+            <div class="row"><input type="text" id="semesterTitle" placeholder="Semester title" style="flex:2;"></div>
+            <div id="semesterCourseBox" style="margin-top:8px;">
+                <div class="row course-row" id="courseRow1">
+                    <input type="text" id="cname1" placeholder="Course" style="flex:2;">
+                    <input type="number" id="cunit1" placeholder="Units" min="0" step="0.5" style="flex:1;">
+                    <select id="cgrade1" style="flex:1;">
+                        <option value="5">A (5.0)</option><option value="4">B (4.0)</option>
+                        <option value="3">C (3.0)</option><option value="2">D (2.0)</option>
+                        <option value="1">E (1.0)</option><option value="0">F (0.0)</option>
+                    </select>
+                    <button onclick="removeCourseRow(1)" class="danger small-btn" style="width:auto;flex:0;">✕</button>
+                </div>
+            </div>
+            <div class="row">
+                <button onclick="addCourseRow()" class="secondary">➕ Add Course</button>
+                <button onclick="saveSemester()">💾 Save Semester</button>
+                <button onclick="deleteSemester()" class="danger">🗑 Delete</button>
+            </div>
+            <button onclick="calcSemesterGPA()" class="secondary">📊 Calculate GPA</button>
+            <div id="semesterGpaOut" style="margin-top:6px;font-weight:600;color:#fbbf24;text-align:center;"></div>
+        </div>
     </div>
 
-    <!-- TOP BAR -->
-    <div class="topbar">
-        <div class="logo">🐐 GoatTutor NG v6</div>
-        <button class="menuBtn" onclick="toggleMenu()">☰</button>
+    <!-- ========== CGPA CALCULATOR ========== -->
+    <div class="page-section" id="sectionCGPACalculator">
+        <div class="card">
+            <h3>📈 CGPA Calculator</h3>
+            <p class="small">Enter semester GPAs and units manually.</p>
+            <div id="cgpaBox">
+                <div class="row">
+                    <input type="number" id="cunit1_cgpa" placeholder="Units" min="0" step="0.5" style="flex:1;">
+                    <input type="number" id="cgpa1_cgpa" placeholder="GPA" min="0" max="5" step="0.01" style="flex:1;">
+                </div>
+            </div>
+            <div class="row">
+                <button onclick="addCGPARow()" class="secondary">➕ Add Semester</button>
+                <button onclick="calcCGPA()">📊 Calculate CGPA</button>
+            </div>
+            <div id="cgpaOut" style="margin-top:8px;font-weight:600;color:#fbbf24;text-align:center;"></div>
+        </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
-
-        <!-- ========== HOME ========== -->
-        <div class="page-section active" id="sectionMain">
-
-            <!-- Dashboard -->
-            <div class="card">
-                <h3>📊 Dashboard</h3>
-                <div class="dash-grid">
-                    <div class="dash-card"><div class="value" id="dashGPA">--</div><div class="label">GPA</div></div>
-                    <div class="dash-card"><div class="value" id="dashCGPA">--</div><div class="label">CGPA</div></div>
-                    <div class="dash-card"><div class="value" id="dashDegree">--</div><div class="label">Degree</div></div>
-                    <div class="dash-card"><div class="value" id="dashStanding">--</div><div class="label">Standing</div></div>
-                </div>
-                <div class="small" style="margin-top:10px;">🔥 Streak: <strong><span id="streakDisplay">0</span> days</strong></div>
-                <div class="small">⏱ Study: <strong><span id="hoursDisplay">0</span> hrs</strong></div>
-                <div class="small">📅 Sessions: <strong><span id="sessionCountDisplay">0</span></strong></div>
-            </div>
-
-            <!-- Quick links to new features -->
-            <div class="card">
-                <h3>🚀 New Tools</h3>
-                <div class="dash-grid">
-                    <div class="dash-card" onclick="navigateTo('research')" style="cursor:pointer;">
-                        <div class="value" style="font-size:1.2rem;">🔍</div>
-                        <div class="label">Summarizer</div>
-                    </div>
-                    <div class="dash-card" onclick="navigateTo('performance')" style="cursor:pointer;">
-                        <div class="value" style="font-size:1.2rem;">📊</div>
-                        <div class="label">Analyzer</div>
-                    </div>
-                    <div class="dash-card" onclick="navigateTo('assignment')" style="cursor:pointer;">
-                        <div class="value" style="font-size:1.2rem;">💡</div>
-                        <div class="label">Ideas</div>
-                    </div>
-                    <div class="dash-card" onclick="navigateTo('wellness')" style="cursor:pointer;">
-                        <div class="value" style="font-size:1.2rem;">🧘</div>
-                        <div class="label">Wellness</div>
-                    </div>
-                    <div class="dash-card" onclick="navigateTo('bookshelf')" style="cursor:pointer;">
-                        <div class="value" style="font-size:1.2rem;">📚</div>
-                        <div class="label">Bookshelf</div>
-                    </div>
-                </div>
-            </div>
+    <!-- ========== CGPA TRACKER ========== -->
+    <div class="page-section" id="sectionCGPA">
+        <div class="card">
+            <h3>📈 CGPA Tracker</h3>
+            <p class="small">Visual progress of your CGPA.</p>
+            <div id="cgpaTrackerContent"><span class="small">No data yet.</span></div>
         </div>
-
-        <!-- ========== RESEARCH SUMMARIZER ========== -->
-        <div class="page-section" id="sectionResearch">
-            <div class="card">
-                <h3>🔍 Research Paper Summarizer</h3>
-                <p class="small">Paste academic text – get a simplified summary instantly.</p>
-                <textarea id="researchText" placeholder="Paste research abstract, journal article, or complex text..." style="min-height:100px;"></textarea>
-                <div class="row">
-                    <select id="summaryLength" style="flex:1;">
-                        <option value="short">Short (3-5 sentences)</option>
-                        <option value="medium" selected>Medium (8-12)</option>
-                        <option value="detailed">Detailed (15-20)</option>
-                    </select>
-                    <button onclick="summarizeResearch()">📄 Summarize</button>
-                </div>
-                <div id="researchResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
-                    <div style="font-weight:600;color:#fbbf24;">📝 Summary</div>
-                    <div id="researchSummary" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
-                    <div style="margin-top:6px;font-size:0.75rem;color:#94a3b8;">🔑 <span id="researchKeywords">Keywords</span></div>
-                    <button onclick="copyResearchSummary()" class="secondary small-btn" style="width:auto;margin-top:4px;">📋 Copy</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== EXAM PERFORMANCE ANALYZER ========== -->
-        <div class="page-section" id="sectionPerformance">
-            <div class="card">
-                <h3>📊 Exam Performance Analyzer</h3>
-                <p class="small">Add your results and discover strengths & weaknesses.</p>
-                <div class="row">
-                    <input type="text" id="perfSubject" placeholder="Subject" style="flex:2;">
-                    <input type="number" id="perfScore" placeholder="Score (%)" min="0" max="100" style="flex:1;">
-                    <select id="perfExamType" style="flex:1;">
-                        <option value="test">Test</option>
-                        <option value="midterm">Midterm</option>
-                        <option value="exam">Exam</option>
-                    </select>
-                </div>
-                <div class="row">
-                    <button onclick="addPerformance()" class="secondary">➕ Add</button>
-                    <button onclick="analyzePerformance()">📊 Analyze</button>
-                </div>
-                <div id="performanceList" style="margin-top:8px;max-height:100px;overflow-y:auto;"></div>
-                <div id="performanceResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
-                    <div style="font-weight:600;color:#fbbf24;">📊 Analysis</div>
-                    <div id="perfAnalysis" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== ASSIGNMENT IDEA GENERATOR ========== -->
-        <div class="page-section" id="sectionAssignment">
-            <div class="card">
-                <h3>💡 Assignment Idea Generator</h3>
-                <p class="small">Stuck? Get fresh ideas and outlines.</p>
-                <div class="row">
-                    <input type="text" id="assignSubject" placeholder="Subject" style="flex:2;">
-                    <input type="text" id="assignTopic" placeholder="Topic (optional)" style="flex:2;">
-                </div>
-                <div class="row">
-                    <select id="assignType" style="flex:1;">
-                        <option value="essay">Essay</option>
-                        <option value="research">Research Paper</option>
-                        <option value="case study">Case Study</option>
-                        <option value="presentation">Presentation</option>
-                        <option value="project">Project</option>
-                    </select>
-                    <button onclick="generateAssignmentIdea()">💡 Generate</button>
-                </div>
-                <div id="assignmentResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
-                    <div style="font-weight:600;color:#fbbf24;">💡 Ideas</div>
-                    <div id="assignmentIdeas" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
-                    <button onclick="copyAssignmentIdeas()" class="secondary small-btn" style="width:auto;margin-top:4px;">📋 Copy</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== STUDY BREAK & WELLNESS ========== -->
-        <div class="page-section" id="sectionWellness">
-            <div class="card">
-                <h3>🧘 Study Break & Wellness Tracker</h3>
-                <p class="small">Avoid burnout – track your sessions and breaks.</p>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;">
-                    <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
-                        <div style="font-size:0.6rem;color:#94a3b8;">Study Sessions</div>
-                        <div style="font-size:1.2rem;font-weight:700;color:#3b82f6;" id="wellnessSessions">0</div>
-                    </div>
-                    <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
-                        <div style="font-size:0.6rem;color:#94a3b8;">Breaks Taken</div>
-                        <div style="font-size:1.2rem;font-weight:700;color:#22c55e;" id="wellnessBreaks">0</div>
-                    </div>
-                    <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
-                        <div style="font-size:0.6rem;color:#94a3b8;">Stress Level</div>
-                        <div style="font-size:1.2rem;font-weight:700;color:#fbbf24;" id="wellnessStress">--</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <button onclick="startStudySession()" class="secondary">📚 Study</button>
-                    <button onclick="startBreak()">🧘 Break</button>
-                    <button onclick="logStressLevel()">😰 Log Stress</button>
-                </div>
-                <div id="breakRecommendation" style="margin-top:6px;padding:8px;background:#0f172a;border-radius:6px;text-align:center;font-size:0.85rem;color:#94a3b8;">
-                    Click "Study" to start tracking your session.
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== DIGITAL BOOKSHELF ========== -->
-        <div class="page-section" id="sectionBookshelf">
-            <div class="card">
-                <h3>📚 Digital Bookshelf</h3>
-                <p class="small">Organize your study resources.</p>
-                <div class="row">
-                    <input type="text" id="bookTitle" placeholder="Resource Title" style="flex:2;">
-                    <input type="text" id="bookLink" placeholder="Link (optional)" style="flex:2;">
-                </div>
-                <div class="row">
-                    <select id="bookCourse" style="flex:1;">
-                        <option value="">Select Course</option>
-                        <option value="CHM 101">CHM 101</option>
-                        <option value="PHY 101">PHY 101</option>
-                        <option value="MTH 101">MTH 101</option>
-                        <option value="BIO 101">BIO 101</option>
-                        <option value="GST 101">GST 101</option>
-                        <option value="General">General</option>
-                    </select>
-                    <select id="bookType" style="flex:1;">
-                        <option value="PDF">PDF/Book</option>
-                        <option value="Video">Video</option>
-                        <option value="Website">Website</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="row">
-                    <input type="number" id="bookRating" placeholder="Rating (1-5)" min="1" max="5" style="flex:1;">
-                    <button onclick="addBook()" class="secondary">➕ Add</button>
-                </div>
-                <input type="text" id="bookSearch" placeholder="Search resources..." style="margin-top:6px;" onkeyup="searchBooks()">
-                <div id="bookList" style="margin-top:8px;max-height:150px;overflow-y:auto;"></div>
-            </div>
-        </div>
-
     </div>
 
-    <script>
-        /* ============================================================
-           GOATTUTOR v6 – ALL FEATURES IN ONE BLOCK
-           ============================================================ */
+    <!-- ========== GPA HISTORY ========== -->
+    <div class="page-section" id="sectionGPAHistory">
+        <div class="card">
+            <h3>📜 GPA History</h3>
+            <div id="gpaHistoryList"><span class="small">No history yet.</span></div>
+            <button onclick="clearAllSemesters()" class="danger">🗑 Clear All</button>
+        </div>
+    </div>
 
-        // ─── GLOBAL ───
-        let currentSection = 'main';
-        let studySessionStart = null;
+    <!-- ========== SCREENING CALCULATOR ========== -->
+    <div class="page-section" id="sectionScreening">
+        <div class="card">
+            <h3>🎯 UNIOSUN Screening Calculator</h3>
+            <p class="small">Enter JAMB + O'level grades.</p>
+            <div class="row"><input type="number" id="jambScore" placeholder="JAMB Score" min="0" max="400" style="flex:2;"></div>
+            <div class="row">
+                <input type="text" id="subject1" placeholder="Subject 1" style="flex:2;">
+                <select id="grade1" style="flex:1;">
+                    <option value="8">A1</option><option value="7">B2</option><option value="6">B3</option>
+                    <option value="5">C4</option><option value="4">C5</option><option value="3">C6</option>
+                    <option value="2">D7</option><option value="1">E8</option><option value="0">F9</option>
+                </select>
+            </div>
+            <div class="row">
+                <input type="text" id="subject2" placeholder="Subject 2" style="flex:2;">
+                <select id="grade2" style="flex:1;">... same options ...</select>
+            </div>
+            <div class="row">
+                <input type="text" id="subject3" placeholder="Subject 3" style="flex:2;">
+                <select id="grade3" style="flex:1;">... same ...</select>
+            </div>
+            <div class="row">
+                <input type="text" id="subject4" placeholder="Subject 4" style="flex:2;">
+                <select id="grade4" style="flex:1;">... same ...</select>
+            </div>
+            <div class="row">
+                <input type="text" id="subject5" placeholder="Subject 5" style="flex:2;">
+                <select id="grade5" style="flex:1;">... same ...</select>
+            </div>
+            <button onclick="calcUNIOSUN()">📊 Calculate</button>
+            <div id="uniosunResult" style="margin-top:8px;font-weight:600;color:#fbbf24;text-align:center;"></div>
+        </div>
+    </div>
 
-        // ─── MENU ───
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebarOverlay').classList.toggle('show');
+    <!-- ========== CUT-OFF MARKS ========== -->
+    <div class="page-section" id="sectionCutoff">
+        <div class="card">
+            <h3>📊 UNIOSUN Cut‑off Marks 2024/2025</h3>
+            <p class="small">Last year's data for prediction.</p>
+            <div class="row">
+                <input type="text" id="cutoffSearch" placeholder="Search..." style="flex:3;" onkeyup="filterCutoffMarks()">
+                <select id="cutoffFaculty" style="flex:1;" onchange="filterCutoffMarks()">
+                    <option value="all">All Faculties</option>
+                    <option value="Agriculture">Agriculture</option>
+                    <option value="Education">Education</option>
+                    <option value="Science">Science</option>
+                    <option value="Social Sciences">Social Sciences</option>
+                    <option value="Law">Law</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Management">Management</option>
+                </select>
+            </div>
+            <div id="cutoffResults" style="margin-top:8px;max-height:300px;overflow-y:auto;"><span class="small">Loading...</span></div>
+            <div class="small" style="margin-top:4px;text-align:center;">GM = General Merit &nbsp;|&nbsp; IC = Indigene/Catchment</div>
+        </div>
+    </div>
+
+    <!-- ========== ACADEMIC CALENDAR ========== -->
+    <div class="page-section" id="sectionCalendar">
+        <div class="card">
+            <h3>📅 UNIOSUN Academic Calendar 2025/2026</h3>
+            <p class="small">Key dates with countdown to next event.</p>
+            <div id="academicCalendarList"><span class="small">Loading...</span></div>
+            <div style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;text-align:center;">
+                <div style="font-size:0.75rem;color:#94a3b8;">⏳ Next Event In</div>
+                <div id="calendarCountdown" style="font-size:1.4rem;font-weight:700;color:#fbbf24;">--</div>
+            </div>
+            <button onclick="viewFullCalendar()" class="secondary small-btn" style="width:auto;">📄 Full Calendar</button>
+        </div>
+    </div>
+
+    <!-- ========== WEEKLY PLANNER ========== -->
+    <div class="page-section" id="sectionPlanner">
+        <div class="card">
+            <h3>📅 Weekly Study Planner</h3>
+            <textarea id="plan" placeholder="Write your plan..."></textarea>
+            <button onclick="savePlan()">💾 Save Plan</button>
+            <button onclick="loadPlan()" class="secondary">📂 Load</button>
+            <button onclick="clearPlan()" class="danger">🗑 Clear</button>
+            <div class="small" id="planStatus" style="margin-top:6px;"></div>
+        </div>
+    </div>
+
+    <!-- ========== STUDY TIMER ========== -->
+    <div class="page-section" id="sectionTimer">
+        <div class="card">
+            <h3>⏱ Study Tracker</h3>
+            <div class="timer" id="time">25:00</div>
+            <div class="timer-row">
+                <button onclick="startTimer()">▶ Start</button>
+                <button onclick="pauseTimer()" class="secondary">⏸ Pause</button>
+                <button onclick="resetTimer()" class="danger">↺ Reset</button>
+            </div>
+            <div class="small" style="text-align:center;margin-top:6px;">
+                Session: <span id="sessionTimerStatus">Idle</span> |
+                Pomodoro: <span id="pomodoroCount">0</span> completed
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== REMINDERS ========== -->
+    <div class="page-section" id="sectionReminders">
+        <div class="card">
+            <h3>🔔 Smart Reminders</h3>
+            <p class="small">Set reminders for assignments, tests, and exams.</p>
+            <div class="row">
+                <input type="text" id="reminderTitle" placeholder="Title" style="flex:2;">
+                <input type="datetime-local" id="reminderDateTime" style="flex:2;">
+            </div>
+            <div class="row">
+                <select id="reminderPriority" style="flex:1;">
+                    <option value="high">🔴 High</option>
+                    <option value="medium">🟡 Medium</option>
+                    <option value="low">🟢 Low</option>
+                </select>
+                <button onclick="addReminder()" class="secondary">➕ Add</button>
+            </div>
+            <div id="reminderList" style="margin-top:8px;max-height:150px;overflow-y:auto;"></div>
+            <button onclick="requestNotificationPermission()" class="secondary small-btn" style="width:auto;margin-top:4px;">🔔 Enable Notifications</button>
+        </div>
+    </div>
+
+    <!-- ========== LECTURE NOTES ========== -->
+    <div class="page-section" id="sectionNotes">
+        <div class="card">
+            <h3>📓 Lecture Note Organizer</h3>
+            <p class="small">Organize your notes by course and topic.</p>
+            <div class="row">
+                <input type="text" id="noteCourse" placeholder="Course" style="flex:2;">
+                <input type="text" id="noteTopic" placeholder="Topic" style="flex:2;">
+            </div>
+            <textarea id="noteContent" placeholder="Write your notes..." style="min-height:60px;"></textarea>
+            <div class="row">
+                <button onclick="addNote()" class="secondary">💾 Save Note</button>
+                <input type="text" id="noteSearch" placeholder="Search notes..." style="flex:2;" onkeyup="searchNotes()">
+            </div>
+            <div id="noteList" style="margin-top:8px;max-height:150px;overflow-y:auto;"></div>
+        </div>
+    </div>
+
+    <!-- ========== BOOKSHELF ========== -->
+    <div class="page-section" id="sectionBookshelf">
+        <div class="card">
+            <h3>📚 Digital Bookshelf</h3>
+            <p class="small">Organize your study resources.</p>
+            <div class="row">
+                <input type="text" id="bookTitle" placeholder="Resource Title" style="flex:2;">
+                <input type="text" id="bookLink" placeholder="Link (optional)" style="flex:2;">
+            </div>
+            <div class="row">
+                <select id="bookCourse" style="flex:1;">
+                    <option value="">Select Course</option>
+                    <option value="CHM 101">CHM 101</option>
+                    <option value="PHY 101">PHY 101</option>
+                    <option value="MTH 101">MTH 101</option>
+                    <option value="BIO 101">BIO 101</option>
+                    <option value="GST 101">GST 101</option>
+                    <option value="General">General</option>
+                </select>
+                <select id="bookType" style="flex:1;">
+                    <option value="PDF">PDF/Book</option>
+                    <option value="Video">Video</option>
+                    <option value="Website">Website</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="row">
+                <input type="number" id="bookRating" placeholder="Rating (1-5)" min="1" max="5" style="flex:1;">
+                <button onclick="addBook()" class="secondary">➕ Add</button>
+            </div>
+            <input type="text" id="bookSearch" placeholder="Search resources..." style="margin-top:6px;" onkeyup="searchBooks()">
+            <div id="bookList" style="margin-top:8px;max-height:150px;overflow-y:auto;"></div>
+        </div>
+    </div>
+
+    <!-- ========== SUMMARIZER ========== -->
+    <div class="page-section" id="sectionSummarizer">
+        <div class="card">
+            <h3>🔍 Research Paper Summarizer</h3>
+            <p class="small">Paste academic text – get a simplified summary.</p>
+            <textarea id="researchText" placeholder="Paste abstract or complex text..." style="min-height:100px;"></textarea>
+            <div class="row">
+                <select id="summaryLength" style="flex:1;">
+                    <option value="short">Short (3-5)</option>
+                    <option value="medium" selected>Medium (8-12)</option>
+                    <option value="detailed">Detailed (15-20)</option>
+                </select>
+                <button onclick="summarizeResearch()">📄 Summarize</button>
+            </div>
+            <div id="researchResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
+                <div style="font-weight:600;color:#fbbf24;">📝 Summary</div>
+                <div id="researchSummary" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
+                <div style="margin-top:6px;font-size:0.75rem;color:#94a3b8;">🔑 <span id="researchKeywords">Keywords</span></div>
+                <button onclick="copyResearchSummary()" class="secondary small-btn" style="width:auto;margin-top:4px;">📋 Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== ASSIGNMENT IDEAS ========== -->
+    <div class="page-section" id="sectionAssignment">
+        <div class="card">
+            <h3>💡 Assignment Idea Generator</h3>
+            <p class="small">Get fresh ideas and outlines.</p>
+            <div class="row">
+                <input type="text" id="assignSubject" placeholder="Subject" style="flex:2;">
+                <input type="text" id="assignTopic" placeholder="Topic (optional)" style="flex:2;">
+            </div>
+            <div class="row">
+                <select id="assignType" style="flex:1;">
+                    <option value="essay">Essay</option>
+                    <option value="research">Research Paper</option>
+                    <option value="case study">Case Study</option>
+                    <option value="presentation">Presentation</option>
+                    <option value="project">Project</option>
+                </select>
+                <button onclick="generateAssignmentIdea()">💡 Generate</button>
+            </div>
+            <div id="assignmentResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
+                <div style="font-weight:600;color:#fbbf24;">💡 Ideas</div>
+                <div id="assignmentIdeas" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
+                <button onclick="copyAssignmentIdeas()" class="secondary small-btn" style="width:auto;margin-top:4px;">📋 Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PERFORMANCE ANALYZER ========== -->
+    <div class="page-section" id="sectionAnalyzer">
+        <div class="card">
+            <h3>📊 Smart Performance Analyzer</h3>
+            <button onclick="analyze()">🔍 Run Full Analysis</button>
+            <div class="card" style="margin-top:10px;background:#0f172a;" id="analysisBox">
+                <span class="small">No analysis yet.</span>
+            </div>
+            <button onclick="resetAnalysis()" class="secondary">🔄 Reset</button>
+        </div>
+    </div>
+
+    <!-- ========== EXAM ANALYZER ========== -->
+    <div class="page-section" id="sectionExamAnalyzer">
+        <div class="card">
+            <h3>📊 Exam Performance Analyzer</h3>
+            <p class="small">Add results to see strengths & weaknesses.</p>
+            <div class="row">
+                <input type="text" id="perfSubject" placeholder="Subject" style="flex:2;">
+                <input type="number" id="perfScore" placeholder="Score (%)" min="0" max="100" style="flex:1;">
+                <select id="perfExamType" style="flex:1;">
+                    <option value="test">Test</option>
+                    <option value="midterm">Midterm</option>
+                    <option value="exam">Exam</option>
+                </select>
+            </div>
+            <div class="row">
+                <button onclick="addPerformance()" class="secondary">➕ Add</button>
+                <button onclick="analyzePerformance()">📊 Analyze</button>
+            </div>
+            <div id="performanceList" style="margin-top:8px;max-height:100px;overflow-y:auto;"></div>
+            <div id="performanceResult" style="margin-top:8px;padding:10px;background:#0f172a;border-radius:8px;display:none;">
+                <div style="font-weight:600;color:#fbbf24;">📊 Analysis</div>
+                <div id="perfAnalysis" style="font-size:0.85rem;margin-top:4px;color:#cbd5e1;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SESSION LOG ========== -->
+    <div class="page-section" id="sectionSessionLog">
+        <div class="card">
+            <h3>📝 Study Session Log</h3>
+            <div class="history-list" id="sessionLogList"><span class="small">No sessions yet.</span></div>
+            <button onclick="clearSessionLog()" class="danger">🗑 Clear</button>
+            <button onclick="exportSessionLog()" class="secondary">📋 Copy</button>
+        </div>
+    </div>
+
+    <!-- ========== WELLNESS ========== -->
+    <div class="page-section" id="sectionWellness">
+        <div class="card">
+            <h3>🧘 Study Break & Wellness Tracker</h3>
+            <p class="small">Track sessions, breaks, and stress.</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;">
+                <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
+                    <div style="font-size:0.6rem;color:#94a3b8;">Study Sessions</div>
+                    <div style="font-size:1.2rem;font-weight:700;color:#3b82f6;" id="wellnessSessions">0</div>
+                </div>
+                <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
+                    <div style="font-size:0.6rem;color:#94a3b8;">Breaks Taken</div>
+                    <div style="font-size:1.2rem;font-weight:700;color:#22c55e;" id="wellnessBreaks">0</div>
+                </div>
+                <div style="background:#0f172a;padding:8px;border-radius:6px;text-align:center;border:1px solid #334155;">
+                    <div style="font-size:0.6rem;color:#94a3b8;">Stress Level</div>
+                    <div style="font-size:1.2rem;font-weight:700;color:#fbbf24;" id="wellnessStress">--</div>
+                </div>
+            </div>
+            <div class="row">
+                <button onclick="startStudySession()" class="secondary">📚 Study</button>
+                <button onclick="startBreak()">🧘 Break</button>
+                <button onclick="logStressLevel()">😰 Log Stress</button>
+            </div>
+            <div id="breakRecommendation" style="margin-top:6px;padding:8px;background:#0f172a;border-radius:6px;text-align:center;font-size:0.85rem;color:#94a3b8;">
+                Click "Study" to start.
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== COUNTDOWN ========== -->
+    <div class="page-section" id="sectionCountdown">
+        <div class="card">
+            <h3>⏳ Exam Countdown</h3>
+            <div class="row">
+                <input type="date" id="examDate" style="flex:2;">
+                <input type="text" id="examLabel" placeholder="Exam name" style="flex:2;">
+            </div>
+            <button onclick="setCountdown()">🎯 Set</button>
+            <div class="countdown-display" id="countdownDisplay">--:--:--:--</div>
+            <div class="countdown-label" id="countdownLabel">No exam set</div>
+            <button onclick="clearCountdown()" class="secondary">🔄 Clear</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    /* ============================================================
+       GOATTUTOR v6 – COMPLETE SINGLE BLOCK
+       All features, grouped sidebar, fully functional.
+       ============================================================ */
+
+    // ─── GLOBALS ───
+    let timerSeconds = 1500;
+    let timerInterval = null;
+    let pomodoroCompleted = parseInt(localStorage.getItem('pomodoroCount')) || 0;
+    let currentSection = 'main';
+    let sessionActive = false;
+    let courseRowCounter = 1;
+    let semCounter = 1;
+    let studySessionStart = null;
+
+    // ─── MENU ───
+    function toggleMenu() {
+        document.getElementById('sidebar').classList.toggle('open');
+        document.getElementById('sidebarOverlay').classList.toggle('show');
+    }
+    function closeMenu() {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('show');
+    }
+
+    // ─── SIDEBAR GROUP TOGGLE ───
+    function toggleGroup(groupId) {
+        const items = document.getElementById(groupId + 'Items');
+        const btn = document.getElementById('group' + groupId.charAt(0).toUpperCase() + groupId.slice(1));
+        if (!items) return;
+        items.classList.toggle('open');
+        if (btn) {
+            const arrow = btn.querySelector('.arrow');
+            if (arrow) arrow.classList.toggle('open');
         }
+        const states = JSON.parse(localStorage.getItem('sidebarGroups') || '{}');
+        states[groupId] = items.classList.contains('open');
+        localStorage.setItem('sidebarGroups', JSON.stringify(states));
+    }
 
-        function closeMenu() {
-            document.getElementById('sidebar').classList.remove('open');
-            document.getElementById('sidebarOverlay').classList.remove('show');
+    function loadGroupStates() {
+        const states = JSON.parse(localStorage.getItem('sidebarGroups') || '{}');
+        ['academic', 'uniosun', 'study', 'analytics'].forEach(g => {
+            const items = document.getElementById(g + 'Items');
+            const btn = document.getElementById('group' + g.charAt(0).toUpperCase() + g.slice(1));
+            if (items && states[g]) {
+                items.classList.add('open');
+                if (btn) { const arrow = btn.querySelector('.arrow'); if (arrow) arrow.classList.add('open'); }
+            }
+        });
+    }
+
+    // ─── NAVIGATION MAP ───
+    const sectionMap = {
+        'main': 'sectionMain',
+        'gpaCalculator': 'sectionGPACalculator',
+        'cgpaCalculator': 'sectionCGPACalculator',
+        'cgpaTracker': 'sectionCGPA',
+        'gpaHistory': 'sectionGPAHistory',
+        'screening': 'sectionScreening',
+        'cutoff': 'sectionCutoff',
+        'calendar': 'sectionCalendar',
+        'planner': 'sectionPlanner',
+        'timer': 'sectionTimer',
+        'reminders': 'sectionReminders',
+        'notes': 'sectionNotes',
+        'bookshelf': 'sectionBookshelf',
+        'summarizer': 'sectionSummarizer',
+        'assignment': 'sectionAssignment',
+        'analyzer': 'sectionAnalyzer',
+        'examAnalyzer': 'sectionExamAnalyzer',
+        'sessionLog': 'sectionSessionLog',
+        'wellness': 'sectionWellness',
+        'countdown': 'sectionCountdown'
+    };
+    const navMap = {
+        'main': 'navMain',
+        'gpaCalculator': 'navGPA',
+        'cgpaCalculator': 'navCGPA',
+        'cgpaTracker': 'navCGPA2',
+        'gpaHistory': 'navGPAHistory',
+        'screening': 'navScreening',
+        'cutoff': 'navCutoff',
+        'calendar': 'navCalendar',
+        'planner': 'navPlanner',
+        'timer': 'navTimer',
+        'reminders': 'navReminders',
+        'notes': 'navNotes',
+        'bookshelf': 'navBookshelf',
+        'summarizer': 'navSummarizer',
+        'assignment': 'navAssignment',
+        'analyzer': 'navAnalyzer',
+        'examAnalyzer': 'navExamAnalyzer',
+        'sessionLog': 'navSessionLog',
+        'wellness': 'navWellness',
+        'countdown': 'navCountdown'
+    };
+
+    function navigateTo(section) {
+        closeMenu();
+        currentSection = section;
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById(sectionMap[section]);
+        if (target) target.classList.add('active');
+        // Update nav active states
+        document.querySelectorAll('.sidebar button:not(.sidebar-group-btn)').forEach(b => b.classList.remove('active-nav'));
+        const navBtn = document.getElementById(navMap[section]);
+        if (navBtn) navBtn.classList.add('active-nav');
+        // Also remove active from group items
+        document.querySelectorAll('.sidebar-group-items button').forEach(b => b.classList.remove('active-nav'));
+        if (navBtn) navBtn.classList.add('active-nav');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Refresh dynamic content
+        if (section === 'planner') loadPlan(true);
+        if (section === 'gpaHistory') renderSavedSemesters();
+        if (section === 'calendar') renderAcademicCalendar();
+        if (section === 'cgpaTracker') renderCGPATracker();
+        if (section === 'cutoff') renderCutoffMarks();
+        if (section === 'sessionLog') renderSessionLog();
+        if (section === 'countdown') updateCountdownDisplay();
+        if (section === 'examAnalyzer') renderPerformance();
+        if (section === 'bookshelf') renderBooks();
+        if (section === 'reminders') renderReminders();
+        if (section === 'notes') renderNotes();
+    }
+
+    // ─── NOTIFICATIONS ───
+    function showNotification(msg, dur) {
+        const toast = document.getElementById('notificationToast');
+        document.getElementById('notificationText').textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toast._t);
+        toast._t = setTimeout(() => toast.classList.remove('show'), dur || 3500);
+    }
+    function hideNotification() {
+        document.getElementById('notificationToast').classList.remove('show');
+    }
+
+    // ─── HELPERS ───
+    function getDegreeClass(cgpa) {
+        cgpa = parseFloat(cgpa);
+        if (isNaN(cgpa)) return 'N/A';
+        if (cgpa >= 4.50) return '🥇 First Class';
+        if (cgpa >= 3.50) return '🥈 2nd Class Upper';
+        if (cgpa >= 2.40) return '🥉 2nd Class Lower';
+        if (cgpa >= 1.50) return '📘 Third Class';
+        if (cgpa >= 1.00) return '📗 Pass';
+        return '⚠️ Below Pass';
+    }
+    function getStanding(cgpa) {
+        cgpa = parseFloat(cgpa);
+        if (isNaN(cgpa)) return 'N/A';
+        if (cgpa >= 3.50) return '✅ Good Standing';
+        if (cgpa >= 2.40) return '⚠️ Average';
+        return '🔴 Needs Improvement';
+    }
+
+    // ─── AI ───
+    function askAI() {
+        const t = document.getElementById('topic').value.trim();
+        const m = document.getElementById('mode').value;
+        if (!t) { showNotification('⚠️ Enter a topic.'); return; }
+        const prompt = 'Act as GoatTutor AI. Mode: ' + m + '. Topic: ' + t;
+        window.open('https://chatgpt.com/?q=' + encodeURIComponent(prompt), '_blank');
+        showNotification('🚀 Opening AI...');
+        logQuickAction('AI Query: ' + t);
+    }
+
+    // ─── DASHBOARD ───
+    function updateDash() {
+        const gpa = localStorage.getItem('gpa') || '--';
+        const cgpa = localStorage.getItem('cgpa') || '--';
+        document.getElementById('dashGPA').innerText = gpa === '--' ? '--' : parseFloat(gpa).toFixed(2);
+        document.getElementById('dashCGPA').innerText = cgpa === '--' ? '--' : parseFloat(cgpa).toFixed(2);
+        document.getElementById('dashDegree').innerText = getDegreeClass(cgpa);
+        document.getElementById('dashStanding').innerText = getStanding(cgpa);
+        const streak = parseInt(localStorage.getItem('streak')) || 0;
+        document.getElementById('streakDisplay').innerText = streak;
+        const mins = parseInt(localStorage.getItem('studyMinutes')) || 0;
+        document.getElementById('hoursDisplay').innerText = (mins / 60).toFixed(1);
+        const sessions = JSON.parse(localStorage.getItem('sessionLog') || '[]').length;
+        document.getElementById('sessionCountDisplay').innerText = sessions;
+    }
+    function updateStreak() {
+        const today = new Date().toDateString();
+        const last = localStorage.getItem('lastVisit');
+        let streak = parseInt(localStorage.getItem('streak')) || 0;
+        if (last !== today) {
+            const y = new Date(); y.setDate(y.getDate() - 1);
+            if (last === y.toDateString()) streak++;
+            else streak = 1;
+            localStorage.setItem('streak', streak);
+            localStorage.setItem('lastVisit', today);
+            if (streak > 1) showNotification('🔥 Streak: ' + streak + ' days!');
         }
+        document.getElementById('streakDisplay').innerText = localStorage.getItem('streak') || 1;
+    }
 
-        const sectionMap = {
-            'main': 'sectionMain',
-            'research': 'sectionResearch',
-            'performance': 'sectionPerformance',
-            'assignment': 'sectionAssignment',
-            'wellness': 'sectionWellness',
-            'bookshelf': 'sectionBookshelf'
-        };
-        const navMap = {
-            'main': 'navMain',
-            'research': 'navResearch',
-            'performance': 'navPerformance',
-            'assignment': 'navAssignment',
-            'wellness': 'navWellness',
-            'bookshelf': 'navBookshelf'
-        };
+    // ─── GPA SYSTEM ───
+    function getSavedSemesters() {
+        try { return JSON.parse(localStorage.getItem('semesters')) || []; } catch { return []; }
+    }
+    function saveSemestersToStorage(s) { localStorage.setItem('semesters', JSON.stringify(s)); }
 
-        function navigateTo(section) {
-            closeMenu();
-            currentSection = section;
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            const target = document.getElementById(sectionMap[section]);
-            if (target) target.classList.add('active');
-            document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active-nav'));
-            const navBtn = document.getElementById(navMap[section]);
-            if (navBtn) navBtn.classList.add('active-nav');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Refresh content for specific sections
-            if (section === 'performance') renderPerformance();
-            if (section === 'bookshelf') renderBooks();
+    function addCourseRow() {
+        courseRowCounter++;
+        const box = document.getElementById('semesterCourseBox');
+        const row = document.createElement('div');
+        row.className = 'row course-row';
+        row.id = 'courseRow' + courseRowCounter;
+        row.innerHTML = `
+            <input type="text" id="cname${courseRowCounter}" placeholder="Course" style="flex:2;">
+            <input type="number" id="cunit${courseRowCounter}" placeholder="Units" min="0" step="0.5" style="flex:1;">
+            <select id="cgrade${courseRowCounter}" style="flex:1;">
+                <option value="5">A</option><option value="4">B</option><option value="3">C</option>
+                <option value="2">D</option><option value="1">E</option><option value="0">F</option>
+            </select>
+            <button onclick="removeCourseRow(${courseRowCounter})" class="danger small-btn" style="width:auto;flex:0;">✕</button>
+        `;
+        box.appendChild(row);
+    }
+    function removeCourseRow(id) {
+        const row = document.getElementById('courseRow' + id);
+        if (!row) return;
+        if (document.querySelectorAll('#semesterCourseBox .course-row').length <= 1) {
+            showNotification('⚠️ Need at least one course.'); return;
         }
-
-        // ─── NOTIFICATIONS ───
-        function showNotification(msg, dur) {
-            const toast = document.getElementById('notificationToast');
-            document.getElementById('notificationText').textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toast._t);
-            toast._t = setTimeout(() => toast.classList.remove('show'), dur || 3500);
+        row.remove();
+    }
+    function getCurrentSemesterData() {
+        const title = document.getElementById('semesterTitle').value.trim() || 'Unnamed';
+        const rows = document.querySelectorAll('#semesterCourseBox .course-row');
+        const courses = [];
+        let valid = false;
+        rows.forEach(row => {
+            const id = row.id.replace('courseRow', '');
+            const name = document.getElementById('cname' + id).value.trim() || 'Course';
+            const units = parseFloat(document.getElementById('cunit' + id).value);
+            const grade = parseFloat(document.getElementById('cgrade' + id).value);
+            if (!isNaN(units) && units > 0) {
+                valid = true;
+                courses.push({ name, units, gradePoint: grade, grade: document.getElementById('cgrade' + id).options[document.getElementById('cgrade' + id).selectedIndex].text });
+            }
+        });
+        return { title, courses, valid };
+    }
+    function calcSemesterGPA() {
+        const data = getCurrentSemesterData();
+        if (!data.valid) { document.getElementById('semesterGpaOut').innerHTML = '⚠️ Add valid courses.'; return; }
+        let total = 0, units = 0;
+        data.courses.forEach(c => { total += c.units * c.gradePoint; units += c.units; });
+        const gpa = (total / units).toFixed(2);
+        document.getElementById('semesterGpaOut').innerHTML = '📊 GPA: <strong>' + gpa + '</strong> / 5.0';
+        return { gpa: parseFloat(gpa), totalUnits: units };
+    }
+    function saveSemester() {
+        const data = getCurrentSemesterData();
+        if (!data.valid) { showNotification('⚠️ Add valid courses.'); return; }
+        let total = 0, units = 0;
+        data.courses.forEach(c => { total += c.units * c.gradePoint; units += c.units; });
+        const gpa = parseFloat((total / units).toFixed(2));
+        const semesters = getSavedSemesters();
+        semesters.push({
+            id: Date.now(),
+            title: data.title,
+            courses: data.courses,
+            gpa: gpa,
+            totalUnits: units,
+            date: new Date().toLocaleString()
+        });
+        saveSemestersToStorage(semesters);
+        document.getElementById('semesterTitle').value = '';
+        document.getElementById('semesterCourseBox').innerHTML = '';
+        courseRowCounter = 0;
+        addCourseRow();
+        document.getElementById('semesterGpaOut').innerHTML = '✅ Saved! GPA: ' + gpa.toFixed(2);
+        renderSavedSemesters();
+        updateDashFromSemesters();
+        renderCGPATracker();
+        showNotification('💾 Semester saved!');
+    }
+    function deleteSemester(id) {
+        let semesters = getSavedSemesters();
+        if (!semesters.length) { showNotification('⚠️ No semesters.'); return; }
+        let target = id;
+        if (!target) {
+            const last = semesters[semesters.length - 1];
+            if (!confirm('Delete "' + last.title + '"?')) return;
+            target = last.id;
         }
-
-        function hideNotification() {
-            document.getElementById('notificationToast').classList.remove('show');
+        semesters = semesters.filter(s => s.id !== target);
+        saveSemestersToStorage(semesters);
+        renderSavedSemesters();
+        updateDashFromSemesters();
+        renderCGPATracker();
+        showNotification('🗑 Deleted.');
+    }
+    function clearAllSemesters() {
+        if (!confirm('Delete all semesters?')) return;
+        saveSemestersToStorage([]);
+        renderSavedSemesters();
+        updateDashFromSemesters();
+        renderCGPATracker();
+        showNotification('🗑 All cleared.');
+    }
+    function renderSavedSemesters() {
+        const semesters = getSavedSemesters();
+        const container = document.getElementById('savedSemestersList');
+        const history = document.getElementById('gpaHistoryList');
+        if (!semesters.length) {
+            const msg = '<span class="small">No semesters saved.</span>';
+            container.innerHTML = msg;
+            if (history) history.innerHTML = msg;
+            return;
         }
-
-        // ─── DASHBOARD HELPERS ───
-        function getDegreeClass(cgpa) {
-            cgpa = parseFloat(cgpa);
-            if (isNaN(cgpa)) return 'N/A';
-            if (cgpa >= 4.50) return '🥇 First';
-            if (cgpa >= 3.50) return '🥈 2:1';
-            if (cgpa >= 2.40) return '🥉 2:2';
-            if (cgpa >= 1.50) return '📘 Third';
-            if (cgpa >= 1.00) return '📗 Pass';
-            return '⚠️ Below';
+        const html = [...semesters].reverse().map(s => `
+            <div style="background:#0f172a;padding:8px;border-radius:8px;margin-top:4px;border:1px solid #334155;">
+                <div style="display:flex;justify-content:space-between;font-weight:600;color:#fbbf24;">
+                    <span>📘 ${s.title}</span>
+                    <span>GPA: ${s.gpa.toFixed(2)}</span>
+                </div>
+                <div style="font-size:0.75rem;color:#94a3b8;">${s.courses.map(c => c.name + ' (' + c.units + 'u)').join(', ')}</div>
+                <div style="font-size:0.7rem;color:#64748b;">${s.date} <button onclick="deleteSemester(${s.id})" class="danger small-btn" style="padding:2px 8px;font-size:0.65rem;">✕</button></div>
+            </div>
+        `).join('');
+        container.innerHTML = html;
+        if (history) history.innerHTML = html;
+    }
+    function updateDashFromSemesters() {
+        const semesters = getSavedSemesters();
+        if (!semesters.length) {
+            localStorage.removeItem('gpa');
+            localStorage.removeItem('cgpa');
+            updateDash();
+            return;
         }
+        let total = 0, units = 0;
+        semesters.forEach(s => { total += s.gpa * s.totalUnits; units += s.totalUnits; });
+        const cgpa = units > 0 ? (total / units) : 0;
+        const last = semesters[semesters.length - 1];
+        localStorage.setItem('gpa', last.gpa.toFixed(2));
+        localStorage.setItem('cgpa', cgpa.toFixed(2));
+        updateDash();
+    }
 
-        function getStanding(cgpa) {
-            cgpa = parseFloat(cgpa);
-            if (isNaN(cgpa)) return 'N/A';
-            if (cgpa >= 3.50) return '✅ Good';
-            if (cgpa >= 2.40) return '⚠️ Average';
-            return '🔴 Improve';
+    // ─── CGPA CALCULATOR (manual) ───
+    function addCGPARow() {
+        semCounter++;
+        const box = document.getElementById('cgpaBox');
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.id = 'cgpaRow' + semCounter;
+        row.innerHTML = `
+            <input type="number" id="cunit${semCounter}_cgpa" placeholder="Units" min="0" step="0.5" style="flex:1;">
+            <input type="number" id="cgpa${semCounter}_cgpa" placeholder="GPA" min="0" max="5" step="0.01" style="flex:1;">
+            <button onclick="removeCGPARow(${semCounter})" class="danger small-btn" style="width:auto;flex:0;">✕</button>
+        `;
+        box.appendChild(row);
+    }
+    function removeCGPARow(id) {
+        const row = document.getElementById('cgpaRow' + id);
+        if (row) {
+            if (document.querySelectorAll('#cgpaBox .row').length <= 1) { showNotification('⚠️ Need at least one.'); return; }
+            row.remove();
         }
+    }
+    function calcCGPA() {
+        let total = 0, units = 0;
+        document.querySelectorAll('#cgpaBox .row').forEach(row => {
+            const id = row.id.replace('cgpaRow', '');
+            const u = parseFloat(document.getElementById('cunit' + id + '_cgpa').value);
+            const g = parseFloat(document.getElementById('cgpa' + id + '_cgpa').value);
+            if (!isNaN(u) && !isNaN(g) && u > 0) { total += u * g; units += u; }
+        });
+        if (!units) { showNotification('⚠️ Enter valid semesters.'); return; }
+        const cgpa = (total / units).toFixed(2);
+        document.getElementById('cgpaOut').innerHTML = '✅ CGPA: <strong>' + cgpa + '</strong> | Class: ' + getDegreeClass(cgpa);
+        showNotification('📈 CGPA: ' + cgpa);
+    }
 
-        function updateDash() {
-            const gpa = localStorage.getItem('gpa') || '--';
-            const cgpa = localStorage.getItem('cgpa') || '--';
-            document.getElementById('dashGPA').innerText = gpa === '--' ? '--' : parseFloat(gpa).toFixed(2);
-            document.getElementById('dashCGPA').innerText = cgpa === '--' ? '--' : parseFloat(cgpa).toFixed(2);
-            document.getElementById('dashDegree').innerText = getDegreeClass(cgpa);
-            document.getElementById('dashStanding').innerText = getStanding(cgpa);
-            const streak = parseInt(localStorage.getItem('streak')) || 0;
-            document.getElementById('streakDisplay').innerText = streak;
-            const mins = parseInt(localStorage.getItem('studyMinutes')) || 0;
-            document.getElementById('hoursDisplay').innerText = (mins / 60).toFixed(1);
-            const sessions = JSON.parse(localStorage.getItem('sessionLog') || '[]').length;
-            document.getElementById('sessionCountDisplay').innerText = sessions;
+    // ─── CGPA TRACKER ───
+    function renderCGPATracker() {
+        const container = document.getElementById('cgpaTrackerContent');
+        const semesters = getSavedSemesters();
+        if (!semesters.length) {
+            container.innerHTML = '<span class="small">No data yet.</span>';
+            return;
         }
+        const sorted = [...semesters].sort((a,b) => new Date(a.date) - new Date(b.date));
+        let total = 0, units = 0;
+        sorted.forEach(s => { total += s.gpa * s.totalUnits; units += s.totalUnits; });
+        const overall = units > 0 ? (total/units) : 0;
+        let html = `<div style="background:#0f172a;padding:10px;border-radius:8px;text-align:center;">
+            <div style="font-size:0.75rem;color:#94a3b8;">Overall CGPA</div>
+            <div style="font-size:2rem;font-weight:700;color:#fbbf24;">${overall.toFixed(2)}</div>
+            <div style="font-size:0.7rem;color:#94a3b8;">${getDegreeClass(overall)}</div>
+        </div><div style="display:flex;flex-direction:column;gap:4px;margin-top:4px;">`;
+        sorted.forEach(s => {
+            const pct = (s.gpa/5)*100;
+            const color = pct>=80 ? '#22c55e' : pct>=60 ? '#fbbf24' : '#ef4444';
+            html += `<div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;">
+                <span style="min-width:80px;color:#94a3b8;">${s.title}</span>
+                <div style="flex:1;background:#1e293b;border-radius:4px;height:8px;overflow:hidden;">
+                    <div style="width:${pct}%;height:100%;background:${color};border-radius:4px;"></div>
+                </div>
+                <span style="min-width:40px;color:#fbbf24;font-weight:600;">${s.gpa.toFixed(2)}</span>
+            </div>`;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
 
-        // ─── 1. RESEARCH SUMMARIZER ───
-        function summarizeResearch() {
-            const text = document.getElementById('researchText').value.trim();
-            const length = document.getElementById('summaryLength').value;
-            const resultDiv = document.getElementById('researchResult');
-            if (!text) { showNotification('⚠️ Please paste some text.'); return; }
-            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 10);
-            let count = length === 'short' ? 3 : length === 'medium' ? 7 : 12;
-            const summary = sentences.slice(0, Math.min(count, sentences.length)).map(s => s.trim() + '.').join(' ');
-            const words = text.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
-            const freq = {};
-            words.forEach(w => { if (w.length > 3 && !['the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can', 'had',
-                    'her', 'was', 'one', 'our', 'out'].includes(w)) { freq[w] = (freq[w] || 0) + 1; } });
-            const keywords = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 6).map(k => k[0]);
-            document.getElementById('researchSummary').innerHTML = summary || 'Not enough text to summarize.';
-            document.getElementById('researchKeywords').innerHTML = keywords.length > 0 ? keywords.join(', ') :
-            'No keywords.';
-            resultDiv.style.display = 'block';
-            showNotification('📄 Summary generated!');
+    // ─── PLANNER ───
+    function savePlan() {
+        const plan = document.getElementById('plan').value;
+        localStorage.setItem('plan', plan);
+        document.getElementById('planStatus').innerText = '✅ Saved ' + new Date().toLocaleString();
+        showNotification('💾 Plan saved.');
+    }
+    function loadPlan(silent) {
+        const plan = localStorage.getItem('plan') || '';
+        document.getElementById('plan').value = plan;
+        if (!silent) document.getElementById('planStatus').innerText = plan ? '📂 Loaded.' : '📂 No plan.';
+    }
+    function clearPlan() {
+        if (confirm('Clear editor?')) {
+            document.getElementById('plan').value = '';
+            document.getElementById('planStatus').innerText = '🗑 Cleared.';
+            showNotification('🗑 Cleared.');
         }
+    }
 
-        function copyResearchSummary() {
-            const s = document.getElementById('researchSummary').innerText;
-            if (s) { navigator.clipboard.writeText(s);
-                showNotification('📋 Copied!'); }
+    // ─── ANALYZER ───
+    function analyze() {
+        const semesters = getSavedSemesters();
+        const gpa = parseFloat(localStorage.getItem('gpa')) || 0;
+        const cgpa = parseFloat(localStorage.getItem('cgpa')) || 0;
+        const streak = parseInt(localStorage.getItem('streak')) || 0;
+        const mins = parseInt(localStorage.getItem('studyMinutes')) || 0;
+        const sessions = JSON.parse(localStorage.getItem('sessionLog') || '[]').length;
+        let msg = '<strong>📊 Analysis</strong><br><br>';
+        msg += 'GPA: ' + (gpa || 'N/A') + '<br>';
+        msg += 'CGPA: ' + (cgpa || 'N/A') + '<br>';
+        msg += 'Degree: ' + getDegreeClass(cgpa) + '<br>';
+        msg += 'Streak: ' + streak + ' days<br>';
+        msg += 'Study: ' + (mins/60).toFixed(1) + ' hrs<br>';
+        msg += 'Sessions: ' + sessions + '<br>';
+        msg += 'Semesters: ' + semesters.length + '<br><br>';
+        if (gpa >= 4.5) msg += '🌟 Excellent!';
+        else if (gpa >= 3.5) msg += '👍 Good!';
+        else if (gpa >= 2.4) msg += '⚠️ Average.';
+        else if (gpa > 0) msg += '🔴 Needs work.';
+        else msg += '📌 No GPA data.';
+        document.getElementById('analysisBox').innerHTML = msg;
+        showNotification('🔍 Analysis done.');
+    }
+    function resetAnalysis() {
+        document.getElementById('analysisBox').innerHTML = '<span class="small">No analysis.</span>';
+        showNotification('🔄 Reset.');
+    }
+
+    // ─── ACADEMIC CALENDAR ───
+    const academicEvents = [
+        { date: '2025-11-10', title: 'Resumption – Fresh' },
+        { date: '2025-11-10', title: 'Orientation' },
+        { date: '2025-11-17', title: 'Resumption – Returning' },
+        { date: '2025-11-17', title: 'Lectures Begin (Harmattan)' },
+        { date: '2025-12-04', title: 'Matriculation' },
+        { date: '2025-12-22', title: 'Christmas Break' },
+        { date: '2026-01-05', title: 'Resumption from Break' },
+        { date: '2026-02-27', title: 'Lecture Free Week' },
+        { date: '2026-03-02', title: 'Harmattan Exams Begin' },
+        { date: '2026-03-23', title: 'Semester Break' },
+        { date: '2026-04-06', title: 'Resumption – Rain' },
+        { date: '2026-04-06', title: 'Lectures Begin (Rain)' },
+        { date: '2026-05-01', title: 'Late Registration Penalty' },
+        { date: '2026-05-08', title: 'Portal Closes' },
+        { date: '2026-07-03', title: 'End of Lectures (Rain)' },
+        { date: '2026-07-06', title: 'Lecture Free Week' },
+        { date: '2026-07-13', title: 'Rain Exams Begin' },
+        { date: '2026-08-07', title: 'Marking Begins' },
+        { date: '2026-09-14', title: 'Annual Leave' },
+        { date: '2026-09-24', title: 'Convocation' }
+    ];
+    function renderAcademicCalendar() {
+        const container = document.getElementById('academicCalendarList');
+        const now = new Date();
+        const upcoming = academicEvents.filter(e => new Date(e.date + 'T00:00:00') >= now);
+        if (!upcoming.length) {
+            container.innerHTML = '<span class="small">No upcoming events.</span>';
+            document.getElementById('calendarCountdown').innerText = '--';
+            return;
         }
-
-        // ─── 2. EXAM PERFORMANCE ANALYZER ───
-        function getPerfData() { try { return JSON.parse(localStorage.getItem('perfData')) || []; } catch { return []; } }
-
-        function savePerfData(d) { localStorage.setItem('perfData', JSON.stringify(d)); }
-
-        function addPerformance() {
-            const subject = document.getElementById('perfSubject').value.trim();
-            const score = parseInt(document.getElementById('perfScore').value);
-            const type = document.getElementById('perfExamType').value;
-            if (!subject) { showNotification('⚠️ Enter subject.'); return; }
-            if (isNaN(score) || score < 0 || score > 100) { showNotification('⚠️ Valid score 0-100.'); return; }
-            const data = getPerfData();
-            data.push({ id: Date.now(), subject, score, type, date: new Date().toLocaleString() });
-            savePerfData(data);
-            renderPerformance();
-            document.getElementById('perfSubject').value = '';
-            document.getElementById('perfScore').value = '';
-            showNotification('📊 Result added!');
+        const next = upcoming[0];
+        const nextFive = upcoming.slice(0,5);
+        let html = '';
+        nextFive.forEach((e, i) => {
+            const isNext = i===0;
+            const dateStr = new Date(e.date).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+            html += `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #334155;${isNext?'background:#1a2a4a;padding:6px 10px;border-radius:6px;':''}">
+                <span ${isNext?'style="font-weight:600;color:#fbbf24;"':''}>${isNext?'🔴 ':''}${e.title}</span>
+                <span style="color:#94a3b8;font-size:0.8rem;">${dateStr}</span>
+            </div>`;
+        });
+        if (upcoming.length > 5) html += `<div class="small" style="text-align:center;">+ ${upcoming.length-5} more</div>`;
+        container.innerHTML = html;
+        const diff = new Date(next.date+'T00:00:00') - now;
+        if (diff <= 0) document.getElementById('calendarCountdown').innerText = '🎉 Today!';
+        else {
+            const d = Math.floor(diff/(1000*60*60*24));
+            const h = Math.floor((diff/(1000*60*60))%24);
+            const m = Math.floor((diff/(1000*60))%60);
+            document.getElementById('calendarCountdown').innerHTML = d+'d '+h+'h '+m+'m';
         }
+    }
+    function viewFullCalendar() {
+        window.open('https://uniosun.edu.ng/index.php/admissions-general-info/ad-academic-calender.html', '_blank');
+    }
 
-        function renderPerformance() {
-            const data = getPerfData();
-            const container = document.getElementById('performanceList');
-            if (!data.length) { container.innerHTML = '<span class="small">No results yet.</span>'; return; }
-            container.innerHTML = data.reverse().map(d =>
-                `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;font-size:0.85rem;">
-                    <span><strong>${d.subject}</strong> (${d.type})</span>
-                    <span style="color:${d.score>=70?'#22c55e':d.score>=50?'#fbbf24':'#ef4444'};">${d.score}%</span>
-                    <button onclick="deletePerf(${d.id})" class="danger small-btn" style="padding:2px 8px;font-size:0.7rem;">✕</button>
-                </div>`
-            ).join('');
+    // ─── CUT-OFF MARKS ───
+    const cutoffData = [
+        { course: 'B. Agric. Economics', faculty: 'Agriculture', merit: 57.0, indigene: 46.4 },
+        { course: 'B.Sc. Computer Science', faculty: 'Science', merit: 68.1, indigene: 62.3 },
+        { course: 'B.Sc. Mass Communication', faculty: 'Social Sciences', merit: 72.0, indigene: 63.7 },
+        { course: 'LL.B. Law', faculty: 'Law', merit: 79.4, indigene: 75.6 },
+        { course: 'MBBS Medicine', faculty: 'Medicine', merit: 85.3, indigene: 82.4 },
+        { course: 'B.Eng. Civil Engineering', faculty: 'Engineering', merit: 67.1, indigene: 61.6 },
+        { course: 'B.Sc. Economics', faculty: 'Social Sciences', merit: 65.0, indigene: 58.0 },
+        { course: 'B.Sc. Accounting', faculty: 'Management', merit: 62.0, indigene: 55.0 },
+        { course: 'B.A. English', faculty: 'Arts', merit: 58.0, indigene: 50.0 },
+    ];
+    function renderCutoffMarks(filter, faculty) {
+        const search = (filter || '').toLowerCase().trim();
+        const f = faculty || document.getElementById('cutoffFaculty').value || 'all';
+        let data = cutoffData;
+        if (search) data = data.filter(c => c.course.toLowerCase().includes(search) || c.faculty.toLowerCase().includes(search));
+        if (f !== 'all') data = data.filter(c => c.faculty === f);
+        const container = document.getElementById('cutoffResults');
+        if (!data.length) { container.innerHTML = '<span class="small">No results.</span>'; return; }
+        let html = '';
+        data.forEach(c => {
+            html += `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;">
+                <span>${c.course}</span>
+                <span style="color:#94a3b8;">GM: <span style="color:#fbbf24;font-weight:600;">${c.merit}</span> IC: ${c.indigene}</span>
+            </div>`;
+        });
+        container.innerHTML = html;
+    }
+    function filterCutoffMarks() {
+        renderCutoffMarks(document.getElementById('cutoffSearch').value, document.getElementById('cutoffFaculty').value);
+    }
+
+    // ─── SCREENING CALCULATOR ───
+    function calcUNIOSUN() {
+        const jamb = parseInt(document.getElementById('jambScore').value);
+        if (isNaN(jamb) || jamb<0 || jamb>400) { showNotification('⚠️ Valid JAMB 0-400.'); return; }
+        let totalOlevel = 0;
+        for (let i=1; i<=5; i++) {
+            const grade = parseInt(document.getElementById('grade'+i).value);
+            if (!isNaN(grade)) totalOlevel += grade;
         }
+        const jambP = (jamb * 60) / 400;
+        const agg = jambP + totalOlevel;
+        const html = `<div style="background:#0f172a;padding:10px;border-radius:8px;text-align:left;">
+            <div><strong>Aggregate:</strong> ${agg.toFixed(2)}%</div>
+            <div style="font-size:0.8rem;color:#94a3b8;">JAMB: ${jambP.toFixed(2)}% | O'level: ${totalOlevel}/40</div>
+            <div style="margin-top:4px;color:#fbbf24;">${agg >= 68 ? '✅ Competitive' : '🔍 Check cut-off'}</div>
+        </div>`;
+        document.getElementById('uniosunResult').innerHTML = html;
+        showNotification('📊 Score: ' + agg.toFixed(2) + '%');
+    }
 
-        function deletePerf(id) {
-            let data = getPerfData();
-            data = data.filter(d => d.id !== id);
-            savePerfData(data);
-            renderPerformance();
-            showNotification('🗑 Removed.');
+    // ─── COUNTDOWN ───
+    function setCountdown() {
+        const date = document.getElementById('examDate').value;
+        const label = document.getElementById('examLabel').value.trim() || 'Exam';
+        if (!date) { showNotification('⚠️ Select date.'); return; }
+        const d = new Date(date + 'T00:00:00');
+        if (d <= new Date()) { showNotification('⚠️ Future date needed.'); return; }
+        localStorage.setItem('examDate', d.toISOString());
+        localStorage.setItem('examLabel', label);
+        updateCountdownDisplay();
+        showNotification('🎯 Countdown set.');
+    }
+    function updateCountdownDisplay() {
+        const stored = localStorage.getItem('examDate');
+        const label = localStorage.getItem('examLabel') || 'Exam';
+        const display = document.getElementById('countdownDisplay');
+        const labelEl = document.getElementById('countdownLabel');
+        if (!stored) { display.innerText = '--:--:--:--'; labelEl.innerText = 'No exam set'; return; }
+        const diff = new Date(stored) - new Date();
+        if (diff <= 0) { display.innerText = '🎉 TIME!'; labelEl.innerText = label + ' is here!'; return; }
+        const d = Math.floor(diff/(1000*60*60*24));
+        const h = Math.floor((diff/(1000*60*60))%24);
+        const m = Math.floor((diff/(1000*60))%60);
+        const s = Math.floor((diff/1000)%60);
+        display.innerText = `${String(d).padStart(2,'0')}:${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        labelEl.innerText = label + ' — ' + d + ' days';
+    }
+    function clearCountdown() {
+        localStorage.removeItem('examDate');
+        localStorage.removeItem('examLabel');
+        document.getElementById('examDate').value = '';
+        document.getElementById('examLabel').value = '';
+        updateCountdownDisplay();
+        showNotification('🔄 Cleared.');
+    }
+
+    // ─── TIMER ───
+    function updateTimerDisplay() {
+        const m = Math.floor(timerSeconds/60);
+        const s = timerSeconds%60;
+        document.getElementById('time').innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+    function startTimer() {
+        if (timerInterval) return;
+        if (!sessionActive) { sessionActive = true; document.getElementById('sessionTimerStatus').innerText = '🔴 Active'; showNotification('⏱ Started.'); }
+        timerInterval = setInterval(() => {
+            timerSeconds--;
+            updateTimerDisplay();
+            if (timerSeconds <= 0) {
+                clearInterval(timerInterval); timerInterval = null;
+                pomodoroCompleted++;
+                localStorage.setItem('pomodoroCount', pomodoroCompleted);
+                document.getElementById('pomodoroCount').innerText = pomodoroCompleted;
+                addStudyMinutes(25);
+                logSession(25);
+                showNotification('🍅 Pomodoro done!');
+                document.getElementById('sessionTimerStatus').innerText = '✅ Completed';
+                sessionActive = false;
+                updateDash();
+            }
+        }, 1000);
+    }
+    function pauseTimer() {
+        clearInterval(timerInterval); timerInterval = null;
+        if (sessionActive) {
+            document.getElementById('sessionTimerStatus').innerText = '⏸ Paused';
+            const elapsed = Math.floor((1500 - timerSeconds)/60);
+            if (elapsed > 0) { addStudyMinutes(elapsed); logSession(elapsed); }
+            sessionActive = false;
+            showNotification('⏸ Paused.');
         }
-
-        function analyzePerformance() {
-            const data = getPerfData();
-            const resultDiv = document.getElementById('performanceResult');
-            if (!data.length) { showNotification('⚠️ Add results first.'); return; }
-            const subjects = {};
-            data.forEach(d => { if (!subjects[d.subject]) subjects[d.subject] = [];
-                subjects[d.subject].push(d.score); });
-            let html = '<div style="font-size:0.85rem;">';
-            Object.entries(subjects).forEach(([s, scores]) => {
-                const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
-                const trend = scores.length > 1 && scores[scores.length - 1] > scores[0] ? '⬆️' : '➡️';
-                const color = avg >= 70 ? '#22c55e' : avg >= 50 ? '#fbbf24' : '#ef4444';
-                html +=
-                    `<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #334155;">
-                        <span>${s}</span>
-                        <span style="color:${color};">${avg.toFixed(1)}%</span>
-                        <span style="font-size:0.7rem;color:#94a3b8;">${trend}</span>
-                    </div>`;
-            });
-            const all = data.map(d => d.score);
-            const overall = all.reduce((a, b) => a + b, 0) / all.length;
-            const color2 = overall >= 70 ? '#22c55e' : overall >= 50 ? '#fbbf24' : '#ef4444';
-            const rec = overall >= 70 ? '✅ Great! Keep it up!' : overall >= 50 ? '📈 Good, focus on weak areas.' :
-                '🔴 Needs improvement.';
-            html +=
-                `<div style="margin-top:6px;padding:8px;background:#0f172a;border-radius:4px;text-align:center;">
-                    <div style="font-weight:700;color:${color2};">Overall: ${overall.toFixed(1)}%</div>
-                    <div style="font-size:0.8rem;color:#94a3b8;">${rec}</div>
-                </div>`;
-            const weak = Object.entries(subjects).filter(([_, s]) => s.reduce((a, b) => a + b, 0) / s.length < 50).map((
-            [s]) => s);
-            if (weak.length) html +=
-                `<div style="margin-top:6px;padding:4px 8px;background:#ef4444;border-radius:4px;font-size:0.8rem;">⚠️ Focus: ${weak.join(', ')}</div>`;
-            html += '</div>';
-            document.getElementById('perfAnalysis').innerHTML = html;
-            resultDiv.style.display = 'block';
-            showNotification('📊 Analysis done!');
+    }
+    function resetTimer() {
+        clearInterval(timerInterval); timerInterval = null;
+        if (sessionActive) {
+            const elapsed = Math.floor((1500 - timerSeconds)/60);
+            if (elapsed > 0) { addStudyMinutes(elapsed); logSession(elapsed); }
+            sessionActive = false;
         }
+        timerSeconds = 1500;
+        document.getElementById('sessionTimerStatus').innerText = 'Idle';
+        updateTimerDisplay();
+        showNotification('↺ Reset.');
+    }
+    function addStudyMinutes(minutes) {
+        const current = parseInt(localStorage.getItem('studyMinutes')) || 0;
+        localStorage.setItem('studyMinutes', current + minutes);
+    }
 
-        // ─── 3. ASSIGNMENT IDEA GENERATOR ───
-        function generateAssignmentIdea() {
-            const subject = document.getElementById('assignSubject').value.trim();
-            const topic = document.getElementById('assignTopic').value.trim() || subject;
-            const type = document.getElementById('assignType').value;
-            const resultDiv = document.getElementById('assignmentResult');
-            if (!subject) { showNotification('⚠️ Enter a subject.'); return; }
-            const ideas = {
-                'essay': [
-                    `"The Impact of ${topic} on Modern Society" – Explore how ${topic} shapes our world.`,
-                    `"A Critical Analysis of ${topic}" – Evaluate key theories and perspectives.`,
-                    `"The Evolution of ${topic}" – Trace development over time.`,
-                    `"${topic} in the 21st Century" – Current challenges and opportunities.`,
-                    `"Comparative Study of ${topic}" – Compare different approaches.`
-                ],
-                'research': [
-                    `"Investigating the Effects of ${topic}" – Design a research study.`,
-                    `"A Literature Review of ${topic}" – Synthesize existing research.`,
-                    `"Case Study Analysis of ${topic}" – In-depth examination.`,
-                    `"Survey Research on ${topic}" – Design and analyze a survey.`,
-                    `"Experimental Study of ${topic}" – Propose an experiment.`
-                ],
-                'case study': [
-                    `"Case Study: ${topic} in Action" – Real-world application.`,
-                    `"Examining ${topic}: A Case Study Approach" – Deep dive.`,
-                    `"Lessons from ${topic}" – What can we learn?`,
-                    `"Comparative Case Studies in ${topic}" – Compare multiple cases.`
-                ],
-                'presentation': [
-                    `"The Story of ${topic}" – Tell the story with visuals.`,
-                    `"5 Key Things About ${topic}" – Clear, concise presentation.`,
-                    `"${topic} Explained" – Simplify complex concepts.`,
-                    `"The Future of ${topic}" – Trends and predictions.`
-                ],
-                'project': [
-                    `"Building a ${topic} Project" – Create something tangible.`,
-                    `"Solving Problems with ${topic}" – Apply to real challenges.`,
-                    `"${topic} Innovation Challenge" – Develop creative solutions.`,
-                    `"Community Impact Project on ${topic}" – Make a difference.`
-                ]
-            };
-            const list = ideas[type] || ideas['essay'];
-            const selected = list.slice(0, 3);
-            let html = '<div style="font-size:0.85rem;">';
-            selected.forEach((idea, i) => {
-                html +=
-                    `<div style="padding:6px 8px;background:#0f172a;border-radius:4px;margin-top:4px;border-left:3px solid #3b82f6;">
-                        <strong>Idea ${i+1}:</strong> ${idea}
-                    </div>`;
-            });
-            html +=
-                `<div style="margin-top:6px;padding:8px;background:#0f172a;border-radius:4px;border:1px solid #334155;">
-                    <div style="font-weight:600;color:#fbbf24;">📋 Outline</div>
-                    <div style="font-size:0.8rem;color:#94a3b8;">1. Introduction<br>2. Body – Key points<br>3. Conclusion<br>4. References</div>
-                </div>`;
-            html += '</div>';
-            document.getElementById('assignmentIdeas').innerHTML = html;
-            resultDiv.style.display = 'block';
-            showNotification('💡 Ideas generated!');
-        }
+    // ─── SESSION LOG ───
+    function logSession(minutes) {
+        if (minutes <= 0) return;
+        const log = JSON.parse(localStorage.getItem('sessionLog') || '[]');
+        log.push({ duration: minutes, date: new Date().toLocaleString(), type: 'Study' });
+        localStorage.setItem('sessionLog', JSON.stringify(log));
+    }
+    function logQuickAction(action) {
+        const log = JSON.parse(localStorage.getItem('sessionLog') || '[]');
+        log.push({ duration: 0, date: new Date().toLocaleString(), type: action });
+        localStorage.setItem('sessionLog', JSON.stringify(log));
+    }
+    function renderSessionLog() {
+        const log = JSON.parse(localStorage.getItem('sessionLog') || '[]');
+        const container = document.getElementById('sessionLogList');
+        if (!log.length) { container.innerHTML = '<span class="small">No sessions.</span>'; return; }
+        container.innerHTML = log.reverse().map(s =>
+            `<div class="history-item">📅 ${s.date} — <strong>${s.type}</strong> ${s.duration > 0 ? '| ' + s.duration + ' min' : ''}</div>`
+        ).join('');
+    }
+    function clearSessionLog() {
+        if (confirm('Clear log?')) { localStorage.removeItem('sessionLog'); renderSessionLog(); showNotification('🗑 Cleared.'); }
+    }
+    function exportSessionLog() {
+        const log = JSON.parse(localStorage.getItem('sessionLog') || '[]');
+        if (!log.length) { showNotification('⚠️ No sessions.'); return; }
+        const text = log.map(s => `[${s.date}] ${s.type} - ${s.duration} min`).join('\n');
+        navigator.clipboard.writeText(text).then(() => showNotification('📋 Copied!'));
+    }
 
-        function copyAssignmentIdeas() {
-            const s = document.getElementById('assignmentIdeas').innerText;
-            if (s) { navigator.clipboard.writeText(s);
-                showNotification('📋 Copied!'); }
-        }
-
-        // ─── 4. WELLNESS TRACKER ───
-        function getWellness() { try { return JSON.parse(localStorage.getItem('wellnessData')) || { sessions: 0,
-                    breaks: 0, stress: [] }; } catch { return { sessions: 0, breaks: 0, stress: [] }; } }
-
-        function saveWellness(d) { localStorage.setItem('wellnessData', JSON.stringify(d)); }
-
-        function updateWellnessUI() {
-            const d = getWellness();
-            document.getElementById('wellnessSessions').innerText = d.sessions || 0;
-            document.getElementById('wellnessBreaks').innerText = d.breaks || 0;
-            if (d.stress && d.stress.length) {
-                const last = d.stress[d.stress.length - 1];
-                const emoji = last <= 3 ? '😊' : last <= 6 ? '🙂' : last <= 8 ? '😰' : '😱';
-                document.getElementById('wellnessStress').innerHTML = last + '/10 ' + emoji;
+    // ─── REMINDERS ───
+    function getReminders() { try { return JSON.parse(localStorage.getItem('reminders')) || []; } catch { return []; } }
+    function saveReminders(r) { localStorage.setItem('reminders', JSON.stringify(r)); }
+    function addReminder() {
+        const title = document.getElementById('reminderTitle').value.trim();
+        const dateTime = document.getElementById('reminderDateTime').value;
+        const priority = document.getElementById('reminderPriority').value;
+        if (!title) { showNotification('⚠️ Enter title.'); return; }
+        if (!dateTime) { showNotification('⚠️ Select date/time.'); return; }
+        const reminders = getReminders();
+        reminders.push({ id: Date.now(), title, dateTime, priority, completed: false });
+        saveReminders(reminders);
+        renderReminders();
+        document.getElementById('reminderTitle').value = '';
+        document.getElementById('reminderDateTime').value = '';
+        showNotification('🔔 Reminder set.');
+        if (Notification.permission === 'granted') {
+            const timeUntil = new Date(dateTime) - new Date();
+            if (timeUntil > 0 && timeUntil < 86400000) {
+                setTimeout(() => {
+                    new Notification('🔔 GoatTutor Reminder', { body: title, icon: '🐐' });
+                }, timeUntil);
             }
         }
+    }
+    function renderReminders() {
+        const reminders = getReminders();
+        const container = document.getElementById('reminderList');
+        if (!reminders.length) { container.innerHTML = '<span class="small">No reminders.</span>'; return; }
+        container.innerHTML = reminders.sort((a,b) => new Date(a.dateTime)-new Date(b.dateTime)).map(r =>
+            `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border-left:3px solid ${r.priority==='high'?'#ef4444':r.priority==='medium'?'#fbbf24':'#22c55e'};font-size:0.85rem;">
+                <span>${r.title} ${r.completed ? '✅' : ''}</span>
+                <span style="font-size:0.7rem;color:#94a3b8;">${new Date(r.dateTime).toLocaleString()}</span>
+                <div>
+                    <button onclick="toggleReminder(${r.id})" class="secondary small-btn" style="padding:2px 6px;font-size:0.6rem;">${r.completed ? '↩' : '✅'}</button>
+                    <button onclick="deleteReminder(${r.id})" class="danger small-btn" style="padding:2px 6px;font-size:0.6rem;">✕</button>
+                </div>
+            </div>`
+        ).join('');
+    }
+    function toggleReminder(id) {
+        const reminders = getReminders();
+        const r = reminders.find(r => r.id === id);
+        if (r) { r.completed = !r.completed; saveReminders(reminders); renderReminders(); showNotification(r.completed ? '✅ Done!' : '↩ Reopened.'); }
+    }
+    function deleteReminder(id) {
+        let reminders = getReminders();
+        reminders = reminders.filter(r => r.id !== id);
+        saveReminders(reminders);
+        renderReminders();
+        showNotification('🗑 Removed.');
+    }
+    function requestNotificationPermission() {
+        if (!('Notification' in window)) { showNotification('⚠️ Not supported.'); return; }
+        if (Notification.permission === 'granted') { showNotification('✅ Already enabled.'); return; }
+        Notification.requestPermission().then(p => {
+            if (p === 'granted') { showNotification('🔔 Notifications enabled!'); } else { showNotification('⚠️ Permission denied.'); }
+        });
+    }
 
-        function startStudySession() {
-            const d = getWellness();
-            d.sessions += 1;
-            saveWellness(d);
-            studySessionStart = Date.now();
-            updateWellnessUI();
-            document.getElementById('breakRecommendation').innerHTML =
-                '📚 Studying... Started at ' + new Date().toLocaleTimeString() +
-                '<br><span style="font-size:0.7rem;color:#94a3b8;">💡 Take a 5-min break every 25 min.</span>';
-            showNotification('📚 Study session started!');
-            setTimeout(() => {
-                if (studySessionStart) {
-                    document.getElementById('breakRecommendation').innerHTML =
-                        '⏰ 25 min done! Time for a break. Click "Break" to rest.';
-                    showNotification('⏰ Time for a break!');
-                }
-            }, 1500000);
-        }
-
-        function startBreak() {
-            const d = getWellness();
-            d.breaks += 1;
-            saveWellness(d);
-            studySessionStart = null;
-            updateWellnessUI();
-            const activities = ['🚶 Take a 5-min walk', '🧘 Stretch your neck & back', '💧 Drink water',
-                '👀 Look away from screen', '🎵 Listen to music', '😮‍💨 Deep breathing'
-            ];
-            const act = activities[Math.floor(Math.random() * activities.length)];
-            document.getElementById('breakRecommendation').innerHTML = '🧘 Break started. ' + act;
-            showNotification('🧘 Break time!');
-        }
-
-        function logStressLevel() {
-            const val = prompt('Stress level (1-10):\n1=No stress  10=Extreme');
-            if (val === null) return;
-            const num = parseInt(val);
-            if (isNaN(num) || num < 1 || num > 10) { showNotification('⚠️ Enter 1-10.'); return; }
-            const d = getWellness();
-            d.stress.push(num);
-            saveWellness(d);
-            updateWellnessUI();
-            const emoji = num <= 3 ? '😊' : num <= 6 ? '🙂' : num <= 8 ? '😰' : '😱';
-            showNotification('😰 Stress logged: ' + num + '/10 ' + emoji);
-        }
-
-        // ─── 5. DIGITAL BOOKSHELF ───
-        function getBooks() { try { return JSON.parse(localStorage.getItem('bookshelf')) || []; } catch { return []; } }
-
-        function saveBooks(b) { localStorage.setItem('bookshelf', JSON.stringify(b)); }
-
-        function addBook() {
-            const title = document.getElementById('bookTitle').value.trim();
-            const link = document.getElementById('bookLink').value.trim();
-            const course = document.getElementById('bookCourse').value || 'General';
-            const type = document.getElementById('bookType').value;
-            const rating = parseInt(document.getElementById('bookRating').value) || 0;
-            if (!title) { showNotification('⚠️ Enter a title.'); return; }
-            const books = getBooks();
-            books.push({ id: Date.now(), title, link: link || '#', course, type, rating, done: false,
-                date: new Date().toLocaleString() });
-            saveBooks(books);
-            renderBooks();
-            document.getElementById('bookTitle').value = '';
-            document.getElementById('bookLink').value = '';
-            document.getElementById('bookRating').value = '';
-            showNotification('📚 "' + title + '" added!');
-        }
-
-        function renderBooks(filter) {
-            let books = getBooks();
-            const container = document.getElementById('bookList');
-            const search = (filter || '').toLowerCase();
-            if (search) books = books.filter(b => b.title.toLowerCase().includes(search) || b.course.toLowerCase()
-            .includes(search) || b.type.toLowerCase().includes(search));
-            if (!books.length) { container.innerHTML = '<span class="small">No resources yet.</span>'; return; }
-            container.innerHTML = books.map(b =>
-                `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;font-size:0.85rem;">
-                    <div><strong>${b.title}</strong> <span style="font-size:0.7rem;color:#94a3b8;">(${b.course})</span> ${b.rating > 0 ? '⭐'.repeat(Math.min(b.rating,5)) : ''}</div>
-                    <div style="display:flex;gap:4px;align-items:center;">
-                        ${b.link && b.link !== '#' ? `<a href="${b.link}" target="_blank" style="color:#3b82f6;text-decoration:none;">🔗</a>` : ''}
-                        <button onclick="toggleBook(${b.id})" class="secondary small-btn" style="padding:2px 6px;font-size:0.6rem;">${b.done ? '✅' : '⬜'}</button>
-                        <button onclick="deleteBook(${b.id})" class="danger small-btn" style="padding:2px 6px;font-size:0.6rem;">✕</button>
+    // ─── LECTURE NOTES ───
+    function getNotes() { try { return JSON.parse(localStorage.getItem('lectureNotes')) || []; } catch { return []; } }
+    function saveNotes(n) { localStorage.setItem('lectureNotes', JSON.stringify(n)); }
+    function addNote() {
+        const course = document.getElementById('noteCourse').value.trim();
+        const topic = document.getElementById('noteTopic').value.trim();
+        const content = document.getElementById('noteContent').value.trim();
+        if (!course || !topic || !content) { showNotification('⚠️ Fill all fields.'); return; }
+        const notes = getNotes();
+        notes.push({ id: Date.now(), course, topic, content, important: false, date: new Date().toLocaleString() });
+        saveNotes(notes);
+        renderNotes();
+        document.getElementById('noteCourse').value = '';
+        document.getElementById('noteTopic').value = '';
+        document.getElementById('noteContent').value = '';
+        showNotification('📓 Note saved.');
+    }
+    function renderNotes(filter) {
+        let notes = getNotes();
+        const container = document.getElementById('noteList');
+        const search = (filter || '').toLowerCase();
+        if (search) notes = notes.filter(n => n.course.toLowerCase().includes(search) || n.topic.toLowerCase().includes(search) || n.content.toLowerCase().includes(search));
+        if (!notes.length) { container.innerHTML = '<span class="small">No notes.</span>'; return; }
+        container.innerHTML = notes.sort((a,b) => new Date(b.date)-new Date(a.date)).map(n =>
+            `<div style="padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;${n.important ? 'border-left:3px solid #fbbf24;' : ''}">
+                <div style="display:flex;justify-content:space-between;">
+                    <strong>${n.course}</strong> - ${n.topic} ${n.important ? '⭐' : ''}
+                    <div>
+                        <button onclick="toggleNoteImportant(${n.id})" class="secondary small-btn" style="padding:2px 6px;font-size:0.6rem;">${n.important ? '⭐' : '☆'}</button>
+                        <button onclick="deleteNote(${n.id})" class="danger small-btn" style="padding:2px 6px;font-size:0.6rem;">✕</button>
                     </div>
-                </div>`
-            ).join('');
+                </div>
+                <div style="font-size:0.85rem;max-height:40px;overflow:hidden;">${n.content}</div>
+                <div style="font-size:0.6rem;color:#94a3b8;">${n.date}</div>
+            </div>`
+        ).join('');
+    }
+    function searchNotes() { renderNotes(document.getElementById('noteSearch').value); }
+    function toggleNoteImportant(id) {
+        const notes = getNotes();
+        const n = notes.find(n => n.id === id);
+        if (n) { n.important = !n.important; saveNotes(notes); renderNotes(document.getElementById('noteSearch').value); }
+    }
+    function deleteNote(id) {
+        let notes = getNotes();
+        notes = notes.filter(n => n.id !== id);
+        saveNotes(notes);
+        renderNotes(document.getElementById('noteSearch').value);
+        showNotification('🗑 Note deleted.');
+    }
+
+    // ─── BOOKSHELF ───
+    function getBooks() { try { return JSON.parse(localStorage.getItem('bookshelf')) || []; } catch { return []; } }
+    function saveBooks(b) { localStorage.setItem('bookshelf', JSON.stringify(b)); }
+    function addBook() {
+        const title = document.getElementById('bookTitle').value.trim();
+        const link = document.getElementById('bookLink').value.trim();
+        const course = document.getElementById('bookCourse').value || 'General';
+        const type = document.getElementById('bookType').value;
+        const rating = parseInt(document.getElementById('bookRating').value) || 0;
+        if (!title) { showNotification('⚠️ Enter title.'); return; }
+        const books = getBooks();
+        books.push({ id: Date.now(), title, link: link || '#', course, type, rating, done: false, date: new Date().toLocaleString() });
+        saveBooks(books);
+        renderBooks();
+        document.getElementById('bookTitle').value = '';
+        document.getElementById('bookLink').value = '';
+        document.getElementById('bookRating').value = '';
+        showNotification('📚 "' + title + '" added.');
+    }
+    function renderBooks(filter) {
+        let books = getBooks();
+        const container = document.getElementById('bookList');
+        const search = (filter || '').toLowerCase();
+        if (search) books = books.filter(b => b.title.toLowerCase().includes(search) || b.course.toLowerCase().includes(search) || b.type.toLowerCase().includes(search));
+        if (!books.length) { container.innerHTML = '<span class="small">No resources.</span>'; return; }
+        container.innerHTML = books.map(b =>
+            `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;font-size:0.85rem;">
+                <div><strong>${b.title}</strong> <span style="font-size:0.7rem;color:#94a3b8;">(${b.course})</span> ${b.rating > 0 ? '⭐'.repeat(Math.min(b.rating,5)) : ''}</div>
+                <div style="display:flex;gap:4px;align-items:center;">
+                    ${b.link && b.link !== '#' ? `<a href="${b.link}" target="_blank" style="color:#3b82f6;text-decoration:none;">🔗</a>` : ''}
+                    <button onclick="toggleBook(${b.id})" class="secondary small-btn" style="padding:2px 6px;font-size:0.6rem;">${b.done ? '✅' : '⬜'}</button>
+                    <button onclick="deleteBook(${b.id})" class="danger small-btn" style="padding:2px 6px;font-size:0.6rem;">✕</button>
+                </div>
+            </div>`
+        ).join('');
+    }
+    function toggleBook(id) {
+        const books = getBooks();
+        const b = books.find(b => b.id === id);
+        if (b) { b.done = !b.done; saveBooks(books); renderBooks(document.getElementById('bookSearch').value); showNotification(b.done ? '✅ Completed!' : '↩ Reopened.'); }
+    }
+    function deleteBook(id) {
+        let books = getBooks();
+        books = books.filter(b => b.id !== id);
+        saveBooks(books);
+        renderBooks(document.getElementById('bookSearch').value);
+        showNotification('🗑 Removed.');
+    }
+    function searchBooks() { renderBooks(document.getElementById('bookSearch').value); }
+
+    // ─── SUMMARIZER ───
+    function summarizeResearch() {
+        const text = document.getElementById('researchText').value.trim();
+        const length = document.getElementById('summaryLength').value;
+        const resultDiv = document.getElementById('researchResult');
+        if (!text) { showNotification('⚠️ Paste text.'); return; }
+        const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 10);
+        const count = length === 'short' ? 3 : length === 'medium' ? 7 : 12;
+        const summary = sentences.slice(0, Math.min(count, sentences.length)).map(s => s.trim() + '.').join(' ');
+        const words = text.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+        const freq = {};
+        const stop = ['the','and','for','are','but','not','you','all','can','had','her','was','one','our','out'];
+        words.forEach(w => { if (w.length > 3 && !stop.includes(w)) freq[w] = (freq[w]||0) + 1; });
+        const keywords = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,6).map(k => k[0]);
+        document.getElementById('researchSummary').innerHTML = summary || 'Not enough text.';
+        document.getElementById('researchKeywords').innerHTML = keywords.length ? keywords.join(', ') : 'None';
+        resultDiv.style.display = 'block';
+        showNotification('📄 Summary generated.');
+    }
+    function copyResearchSummary() {
+        const s = document.getElementById('researchSummary').innerText;
+        if (s) { navigator.clipboard.writeText(s); showNotification('📋 Copied!'); }
+    }
+
+    // ─── ASSIGNMENT IDEAS ───
+    function generateAssignmentIdea() {
+        const subject = document.getElementById('assignSubject').value.trim();
+        const topic = document.getElementById('assignTopic').value.trim() || subject;
+        const type = document.getElementById('assignType').value;
+        const resultDiv = document.getElementById('assignmentResult');
+        if (!subject) { showNotification('⚠️ Enter subject.'); return; }
+        const ideas = {
+            'essay': [
+                `"The Impact of ${topic} on Modern Society" – Explore how ${topic} shapes our world.`,
+                `"A Critical Analysis of ${topic}" – Evaluate key theories.`,
+                `"The Evolution of ${topic}" – Trace development over time.`,
+                `"${topic} in the 21st Century" – Challenges and opportunities.`,
+                `"Comparative Study of ${topic}" – Compare approaches.`
+            ],
+            'research': [
+                `"Investigating the Effects of ${topic}" – Design a study.`,
+                `"A Literature Review of ${topic}" – Synthesize research.`,
+                `"Case Study Analysis of ${topic}" – In-depth examination.`,
+                `"Survey Research on ${topic}" – Design and analyze.`,
+                `"Experimental Study of ${topic}" – Propose an experiment.`
+            ],
+            'case study': [
+                `"Case Study: ${topic} in Action" – Real-world application.`,
+                `"Examining ${topic}: A Case Study Approach" – Deep dive.`,
+                `"Lessons from ${topic}" – What can we learn?`,
+                `"Comparative Case Studies in ${topic}" – Compare cases.`
+            ],
+            'presentation': [
+                `"The Story of ${topic}" – Tell with visuals.`,
+                `"5 Key Things About ${topic}" – Clear, concise.`,
+                `"${topic} Explained" – Simplify complex concepts.`,
+                `"The Future of ${topic}" – Trends and predictions.`
+            ],
+            'project': [
+                `"Building a ${topic} Project" – Create something tangible.`,
+                `"Solving Problems with ${topic}" – Apply to challenges.`,
+                `"${topic} Innovation Challenge" – Develop creative solutions.`,
+                `"Community Impact Project on ${topic}" – Make a difference.`
+            ]
+        };
+        const list = ideas[type] || ideas['essay'];
+        const selected = list.slice(0, 3);
+        let html = '';
+        selected.forEach((idea, i) => {
+            html += `<div style="padding:6px 8px;background:#0f172a;border-radius:4px;margin-top:4px;border-left:3px solid #3b82f6;">
+                <strong>Idea ${i+1}:</strong> ${idea}
+            </div>`;
+        });
+        html += `<div style="margin-top:6px;padding:8px;background:#0f172a;border-radius:4px;border:1px solid #334155;">
+            <div style="font-weight:600;color:#fbbf24;">📋 Outline</div>
+            <div style="font-size:0.8rem;color:#94a3b8;">1. Introduction<br>2. Body – Key points<br>3. Conclusion<br>4. References</div>
+        </div>`;
+        document.getElementById('assignmentIdeas').innerHTML = html;
+        resultDiv.style.display = 'block';
+        showNotification('💡 Ideas generated.');
+    }
+    function copyAssignmentIdeas() {
+        const s = document.getElementById('assignmentIdeas').innerText;
+        if (s) { navigator.clipboard.writeText(s); showNotification('📋 Copied!'); }
+    }
+
+    // ─── PERFORMANCE ANALYZER (Exam) ───
+    function getPerfData() { try { return JSON.parse(localStorage.getItem('perfData')) || []; } catch { return []; } }
+    function savePerfData(d) { localStorage.setItem('perfData', JSON.stringify(d)); }
+    function addPerformance() {
+        const subject = document.getElementById('perfSubject').value.trim();
+        const score = parseInt(document.getElementById('perfScore').value);
+        const type = document.getElementById('perfExamType').value;
+        if (!subject) { showNotification('⚠️ Enter subject.'); return; }
+        if (isNaN(score) || score<0 || score>100) { showNotification('⚠️ Valid score 0-100.'); return; }
+        const data = getPerfData();
+        data.push({ id: Date.now(), subject, score, type, date: new Date().toLocaleString() });
+        savePerfData(data);
+        renderPerformance();
+        document.getElementById('perfSubject').value = '';
+        document.getElementById('perfScore').value = '';
+        showNotification('📊 Result added.');
+    }
+    function renderPerformance() {
+        const data = getPerfData();
+        const container = document.getElementById('performanceList');
+        if (!data.length) { container.innerHTML = '<span class="small">No results.</span>'; return; }
+        container.innerHTML = data.reverse().map(d =>
+            `<div style="display:flex;justify-content:space-between;padding:4px 8px;background:#0f172a;border-radius:4px;margin-top:2px;border:1px solid #334155;">
+                <span><strong>${d.subject}</strong> (${d.type})</span>
+                <span style="color:${d.score>=70?'#22c55e':d.score>=50?'#fbbf24':'#ef4444'};">${d.score}%</span>
+                <button onclick="deletePerf(${d.id})" class="danger small-btn" style="padding:2px 8px;font-size:0.7rem;">✕</button>
+            </div>`
+        ).join('');
+    }
+    function deletePerf(id) {
+        let data = getPerfData();
+        data = data.filter(d => d.id !== id);
+        savePerfData(data);
+        renderPerformance();
+        showNotification('🗑 Removed.');
+    }
+    function analyzePerformance() {
+        const data = getPerfData();
+        const resultDiv = document.getElementById('performanceResult');
+        if (!data.length) { showNotification('⚠️ Add results first.'); return; }
+        const subjects = {};
+        data.forEach(d => { if (!subjects[d.subject]) subjects[d.subject] = []; subjects[d.subject].push(d.score); });
+        let html = '';
+        Object.entries(subjects).forEach(([s, scores]) => {
+            const avg = scores.reduce((a,b) => a+b, 0) / scores.length;
+            const trend = scores.length > 1 && scores[scores.length-1] > scores[0] ? '⬆️' : '➡️';
+            const color = avg >= 70 ? '#22c55e' : avg >= 50 ? '#fbbf24' : '#ef4444';
+            html += `<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #334155;">
+                <span>${s}</span>
+                <span style="color:${color};">${avg.toFixed(1)}%</span>
+                <span style="font-size:0.7rem;color:#94a3b8;">${trend}</span>
+            </div>`;
+        });
+        const all = data.map(d => d.score);
+        const overall = all.reduce((a,b) => a+b, 0) / all.length;
+        const color2 = overall >= 70 ? '#22c55e' : overall >= 50 ? '#fbbf24' : '#ef4444';
+        const rec = overall >= 70 ? '✅ Great!' : overall >= 50 ? '📈 Good, focus on weak areas.' : '🔴 Needs improvement.';
+        html += `<div style="margin-top:6px;padding:8px;background:#0f172a;border-radius:4px;text-align:center;">
+            <div style="font-weight:700;color:${color2};">Overall: ${overall.toFixed(1)}%</div>
+            <div style="font-size:0.8rem;color:#94a3b8;">${rec}</div>
+        </div>`;
+        const weak = Object.entries(subjects).filter(([_, s]) => s.reduce((a,b) => a+b,0)/s.length < 50).map(([s]) => s);
+        if (weak.length) html += `<div style="margin-top:6px;padding:4px 8px;background:#ef4444;border-radius:4px;font-size:0.8rem;">⚠️ Focus: ${weak.join(', ')}</div>`;
+        document.getElementById('perfAnalysis').innerHTML = html;
+        resultDiv.style.display = 'block';
+        showNotification('📊 Analysis done.');
+    }
+
+    // ─── WELLNESS ───
+    function getWellness() { try { return JSON.parse(localStorage.getItem('wellnessData')) || { sessions: 0, breaks: 0, stress: [] }; } catch { return { sessions: 0, breaks: 0, stress: [] }; } }
+    function saveWellness(d) { localStorage.setItem('wellnessData', JSON.stringify(d)); }
+    function updateWellnessUI() {
+        const d = getWellness();
+        document.getElementById('wellnessSessions').innerText = d.sessions || 0;
+        document.getElementById('wellnessBreaks').innerText = d.breaks || 0;
+        if (d.stress && d.stress.length) {
+            const last = d.stress[d.stress.length-1];
+            const emoji = last <= 3 ? '😊' : last <= 6 ? '🙂' : last <= 8 ? '😰' : '😱';
+            document.getElementById('wellnessStress').innerHTML = last + '/10 ' + emoji;
         }
+    }
+    function startStudySession() {
+        const d = getWellness();
+        d.sessions += 1;
+        saveWellness(d);
+        studySessionStart = Date.now();
+        updateWellnessUI();
+        document.getElementById('breakRecommendation').innerHTML = '📚 Studying... Started at ' + new Date().toLocaleTimeString() +
+            '<br><span style="font-size:0.7rem;color:#94a3b8;">💡 Take a 5-min break every 25 min.</span>';
+        showNotification('📚 Session started.');
+        setTimeout(() => {
+            if (studySessionStart) {
+                document.getElementById('breakRecommendation').innerHTML = '⏰ 25 min done! Time for a break. Click "Break" to rest.';
+                showNotification('⏰ Time for a break!');
+            }
+        }, 1500000);
+    }
+    function startBreak() {
+        const d = getWellness();
+        d.breaks += 1;
+        saveWellness(d);
+        studySessionStart = null;
+        updateWellnessUI();
+        const activities = ['🚶 Take a 5-min walk', '🧘 Stretch', '💧 Drink water', '👀 Look away from screen', '🎵 Listen to music', '😮‍💨 Deep breathing'];
+        const act = activities[Math.floor(Math.random() * activities.length)];
+        document.getElementById('breakRecommendation').innerHTML = '🧘 Break started. ' + act;
+        showNotification('🧘 Break time!');
+    }
+    function logStressLevel() {
+        const val = prompt('Stress level (1-10):\n1=No stress  10=Extreme');
+        if (val === null) return;
+        const num = parseInt(val);
+        if (isNaN(num) || num < 1 || num > 10) { showNotification('⚠️ Enter 1-10.'); return; }
+        const d = getWellness();
+        d.stress.push(num);
+        saveWellness(d);
+        updateWellnessUI();
+        const emoji = num <= 3 ? '😊' : num <= 6 ? '🙂' : num <= 8 ? '😰' : '😱';
+        showNotification('😰 Stress logged: ' + num + '/10 ' + emoji);
+    }
 
-        function toggleBook(id) {
-            const books = getBooks();
-            const b = books.find(b => b.id === id);
-            if (b) { b.done = !b.done;
-                saveBooks(books);
-                renderBooks(document.getElementById('bookSearch').value);
-                showNotification(b.done ? '✅ Completed!' : '↩ Reopened.'); }
-        }
+    // ─── INIT ───
+    function init() {
+        updateTimerDisplay();
+        updateStreak();
+        updateDash();
+        updateCountdownDisplay();
+        document.getElementById('pomodoroCount').innerText = pomodoroCompleted;
+        loadPlan(true);
+        renderSessionLog();
+        // GPA init
+        const rows = document.querySelectorAll('#semesterCourseBox .course-row');
+        if (rows.length === 0) { courseRowCounter = 0; addCourseRow(); } else { courseRowCounter = rows.length; }
+        renderSavedSemesters();
+        updateDashFromSemesters();
+        renderAcademicCalendar();
+        renderCGPATracker();
+        renderCutoffMarks();
+        // CGPA manual rows
+        const cgpaRows = document.querySelectorAll('#cgpaBox .row');
+        if (cgpaRows.length === 0) { semCounter = 0; addCGPARow(); } else { semCounter = cgpaRows.length; }
+        // New features init
+        renderPerformance();
+        renderBooks();
+        renderReminders();
+        renderNotes();
+        updateWellnessUI();
+        loadGroupStates();
 
-        function deleteBook(id) {
-            let books = getBooks();
-            books = books.filter(b => b.id !== id);
-            saveBooks(books);
-            renderBooks(document.getElementById('bookSearch').value);
-            showNotification('🗑 Removed.');
-        }
+        // Auto-refresh countdown every second
+        setInterval(() => {
+            if (currentSection === 'countdown' || document.getElementById('sectionCountdown').classList.contains('active'))
+                updateCountdownDisplay();
+        }, 1000);
+    }
 
-        function searchBooks() {
-            renderBooks(document.getElementById('bookSearch').value);
-        }
+    document.getElementById('sidebarOverlay').addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-        // ─── INIT ───
-        function init() {
-            updateDash();
-            updateWellnessUI();
-            renderPerformance();
-            renderBooks();
-        }
-
-        document.getElementById('sidebarOverlay').addEventListener('click', closeMenu);
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-
-        init();
-        console.log('🐐 GoatTutor NG v6 – All features loaded.');
-    </script>
+    init();
+    console.log('🐐 GoatTutor NG v6 – All features loaded with grouped sidebar.');
+</script>
 </body>
 </html>
